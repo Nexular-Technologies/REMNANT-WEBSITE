@@ -10,4 +10,9 @@ export default defineConfig({
       },
     }),
   ],
+  base: '/REMNANT-WEBSITE/',
+  build: {
+    outDir: 'dist',
+    sourcemap: true
+  }
 })
