@@ -1167,7 +1167,7 @@ section,
 }
 
 .services .service-item.item-red i {
-  color: #df1529;
+  color: #9c2527;
 }
 
 .services .service-item.item-red:hover .icon i {
@@ -1175,7 +1175,7 @@ section,
 }
 
 .services .service-item.item-red:hover .icon path {
-  fill: #df1529;
+  fill: #9c2527;
 }
 
 .services .service-item.item-indigo i {
