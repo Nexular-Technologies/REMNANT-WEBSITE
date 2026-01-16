@@ -31,7 +31,7 @@
 
     if (mobileNavToggleBtn) {
       mobileNavToggleBtn.classList.toggle('bi-list');
-      mobileNavToggleBtn.classList.toggle('bi-x');
+      mobileNavToggleBtn.classList.toggle('bi-x-lg'); // Using the thicker 'Large' X;
     }
   }
 
@@ -58,7 +58,7 @@
   /**
    * Hide mobile nav on same-page/hash links
    */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
+document.querySelectorAll('.navmenu a').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
       if (document.querySelector('.mobile-nav-active')) {
         mobileNavToogle();

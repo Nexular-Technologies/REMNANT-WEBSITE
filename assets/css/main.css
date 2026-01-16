@@ -322,98 +322,93 @@ h6 {
   }
 }
 
+
+/*--------------------------------------------------------------
+# Navigation Menu Layout (Mobile < 1200px)
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Navigation Menu Layout (Mobile < 1200px)
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Navigation Menu Layout (Mobile < 1200px)
+--------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Navigation Menu Layout (Mobile < 1200px)
 --------------------------------------------------------------*/
 @media (max-width: 1200px) {
 
-  /* Mobile styles: Show the hamburger icon and hide the desktop nav menus */
-  .header .container {
-    justify-content: space-between !important;
-  }
-
-  .header .logo {
-    order: 2;
-    width: auto;
-    text-align: center;
-    margin: 0;
-  }
-
-  /* CRITICAL FIX: HIDE DESKTOP NAVS */
-  #navmenu-left,
-  #navmenu-right {
+  /* 1. Hide original desktop positions */
+  #navmenu-left, #navmenu-right {
     display: none !important;
   }
 
-  /* SHOW MOBILE TOGGLE */
+  /* 2. THE CRITICAL "X" BUTTON FIX */
   .mobile-nav-toggle {
     display: block !important;
-    order: 1;
-    /* Place it nicely on the left side */
-    color: var(--heading-color);
-    font-size: 28px;
+    position: relative; 
+    z-index: 999999 !important; /* Highest possible layer */
+    color: #333333 !important; /* Dark color for visibility */
+    font-size: 32px;
     cursor: pointer;
-    line-height: 0;
-    margin-right: 15px;
-  }
-
-  /* FIX: Styles for the mobile navigation menu itself when active */
-  .mobile-nav-active .navmenu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    overflow-y: auto;
     transition: 0.3s;
-    padding: 30px 15px;
-    background: var(--nav-mobile-background-color);
-    z-index: 998;
+  }
+  /* Force the icon change */
+.mobile-nav-toggle.bi-x::before {
+  content: "\f659" !important; /* This is the unicode for the 'X' in Bootstrap Icons */
+}
+  /* When the menu is active, lock the 'X' to the top right corner */
+  .mobile-nav-active .mobile-nav-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #A02A2A !important; /* Red color to make it obvious */
   }
 
+  /* 3. Style the overlay menus */
+  .mobile-nav-active #navmenu-left, 
+  .mobile-nav-active #navmenu-right {
+    display: block !important;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background: #ffffff !important;
+    z-index: 999997; /* Layer just below the toggle button */
+  }
+
+  /* 4. Layout Stacking: Moves 'HOME' down so it's not under the 'X' */
+  .mobile-nav-active #navmenu-left {
+    top: 0;
+    padding-top: 100px; 
+    height: auto;
+  }
+
+  .mobile-nav-active #navmenu-right {
+    top: 260px; /* Offset so it sits below the first menu */
+    height: 100vh;
+    padding-top: 0;
+  }
+
+  /* 5. Link Styling (matches your screenshots) */
   .mobile-nav-active .navmenu ul {
     display: block;
-    /* Stack links vertically */
-    padding: 0;
-  }
-
-  .mobile-nav-active .navmenu li {
-    margin: 10px 0;
-    /* Vertical spacing for mobile links */
+    padding: 0 30px;
+    margin: 0;
+    list-style: none;
   }
 
   .mobile-nav-active .navmenu a {
+    color: #333333 !important; 
+    padding: 15px 0;
+    font-size: 18px;
     display: block;
-    padding: 10px 15px;
-    font-weight: 500;
-    color: var(--nav-color);
-  }
-}
-/* FORCE FIX: Mobile Navigation Visibility */
-@media (max-width: 991px) {
-  /* 1. Force the container to be on top of the Team Modal */
-  .navbar-mobile,
-  .mobile-nav-active,
-  #navbar {
-    z-index: 2147483647 !important; /* Max possible Z-Index */
-    position: fixed; /* Ensure it stays on screen */
+    border-bottom: 1px solid #eee;
+    text-decoration: none;
   }
 
-  /* 2. Ensure the background is visible (not transparent) */
-  .navbar-mobile {
-    background-color: #ffffff !important; 
-    border-bottom: 2px solid #A02A2A; /* Adds a red line to see where it ends */
+  /* Prevent page scrolling when menu is open */
+  body.mobile-nav-active {
+    overflow: hidden;
   }
-
-  /* 3. Ensure text is visible (not white on white) */
-  .navbar-mobile a {
-    color: #333333 !important;
-  }
-}
-
-/* Fix the Modal Overlay so it doesn't cover the menu */
-.modal-overlay {
-  z-index: 999 !important; /* Lower than the navigation */
 }
 /*------------------------------------------------------
 # Global Footer
