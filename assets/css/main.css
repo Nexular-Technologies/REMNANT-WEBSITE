@@ -388,22 +388,27 @@ h6 {
     padding-top: 0;
   }
 
-  /* 5. Link Styling (matches your screenshots) */
-  .mobile-nav-active .navmenu ul {
-    display: block;
-    padding: 0 30px;
-    margin: 0;
-    list-style: none;
-  }
+/* 5. Link Styling */
+.mobile-nav-active .navmenu ul {
+  display: block;
+  padding: 0 30px;
+  margin: 0;
+  list-style: none;
+}
 
-  .mobile-nav-active .navmenu a {
-    color: #333333 !important; 
-    padding: 15px 0;
-    font-size: 18px;
-    display: block;
-    border-bottom: 1px solid #eee;
-    text-decoration: none;
-  }
+.mobile-nav-active .navmenu a {
+  color: #333333 !important; 
+  padding: 15px 0;
+  font-size: 18px;
+  display: block;
+  text-decoration: none;
+  transition: color 0.3s; /* Optional: Makes the hover feel smoother */
+}
+
+/* Only define what CHANGES on hover */
+.mobile-nav-active .navmenu a:hover {
+  color: var(--nav-color) !important; /* Added !important to match the base state priority */
+}
 
   /* Prevent page scrolling when menu is open */
   body.mobile-nav-active {
@@ -430,11 +435,13 @@ h6 {
   margin-bottom: 25px;
 }
 
+
 .footer .footer-about .logo img {
- height:auto;
- width: 250px;
-  margin-right: 6px;
+  height: auto;
+  width: 100%;      /* Let the HTML column decide the width */
+  max-width: 300px; /* Limit the size so it doesn't get too big */
 }
+
 
 .footer .footer-about .logo span {
   font-size: 26px;
