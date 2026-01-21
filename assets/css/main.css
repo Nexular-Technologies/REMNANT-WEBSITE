@@ -415,6 +415,71 @@ h6 {
     overflow: hidden;
   }
 }
+/*--------------------------------------------------------------
+# Service Modals
+--------------------------------------------------------------*/
+
+.service-modal-custom {
+    background-color: #be1e2d !important; /* Deep Red */
+    color: #ffffff !important;
+    border: 4px solid #ffffff; 
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    text-align: center;
+    overflow: hidden; /* Ensures background doesn't bleed past corners */
+}
+
+.service-modal-custom .modal-header {
+    flex-direction: column;
+    padding-top: 2rem;
+    border: none;
+}
+
+/* Merged Title Logic */
+.service-modal-custom .modal-title {
+    font-weight: 900 !important;
+    font-size: 1.6rem; /* Consistent size */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+}
+
+.service-modal-custom .btn-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    filter: invert(1) grayscale(100%) brightness(200%); /* Makes X white */
+    opacity: 0.8;
+    z-index: 1060; /* Ensures it stays on top of the content */
+}
+
+.service-modal-custom .modal-body {
+    padding: 2rem;
+    font-size: 1.15rem;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* Modal Icon Styling */
+.modal-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; 
+    width: 100%;
+}
+
+.modal-icon {
+    width: 50px; 
+    height: auto;
+    filter: brightness(0) invert(1); /* Turns colored icons white */
+}
+
+/* Link Interaction Fixes */
+.service-item a.stretched-link:focus {
+    outline: none;
+    box-shadow: none;
+}
 /*------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
