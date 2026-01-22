@@ -723,7 +723,63 @@ h6 {
 
 /*--------------------------------------------------------------
 # Global Page Titles & Breadcrumbs
---------------------------------------------------------------*/
+------------------------------------------------------------ */
+.page-title {
+  /* Using a subtle background to separate it from the header */
+  background-color: #dcdcdc7a !important; 
+  padding: 60px 0; /* Increased padding for a more professional look */
+  position: relative;
+}
+
+.page-title .container {
+  /* This ensures the text aligns with the margins of your logo/nav */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.page-title h1 {
+  /* Matching the deep red/maroon from your logo */
+  color: #8b2323; 
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: none;
+}
+
+.page-title .breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  color: #5f656b; /* Soft gray to match the screenshot text */
+}
+
+.page-title .breadcrumb li + li {
+  padding-left: 10px;
+}
+
+.page-title .breadcrumb li + li::before {
+  content: "/";
+  display: inline-block;
+  padding-right: 10px;
+  color: #ccc;
+}
+
+.page-title .breadcrumb li a {
+  color: #5f656b;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.page-title .breadcrumb li a:hover {
+  color: #8b2323; /* Hover color matches the title red */
+}
+/*------------------------------------------------------------
+# Global Page Titles & Breadcrumbs
+------------------------------------------------------------ */
 .page-title {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -734,9 +790,11 @@ h6 {
 .page-title h1 {
   font-size: 24px;
   font-weight: 700;
+  margin-bottom: 8px; /* Added for better spacing between title and breadcrumb */
 }
 
-.page-title .breadcrumbs ol {
+/* Match the <ol class="breadcrumb"> in your HTML */
+.page-title .breadcrumb {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -746,17 +804,29 @@ h6 {
   font-weight: 400;
 }
 
-.page-title .breadcrumbs ol li+li {
+/* Target the list items specifically */
+.page-title .breadcrumb li + li {
   padding-left: 10px;
 }
 
-.page-title .breadcrumbs ol li+li::before {
+/* Style for the "/" separator */
+.page-title .breadcrumb li + li::before {
   content: "/";
   display: inline-block;
   padding-right: 10px;
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
+/* Ensure links inherit the correct look */
+.page-title .breadcrumb li a {
+  color: var(--default-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.page-title .breadcrumb li a:hover {
+  opacity: 0.7;
+}
 /*--------------------------------------------------------------
 # Global Sections
 --------------------------------------------------------------*/
@@ -1622,23 +1692,25 @@ section,
   height: 400px;
 
   /* 2. CENTER THE CARD */
-  margin: 0 auto; /* Centers the card inside the column */
+  margin: 0 auto; 
 
   /* 3. LAYOUT LOGIC */
   display: flex;
   flex-direction: column;
-  background-color: var(--background-color); /* or #fff */
+  background-color: var(--background-color); 
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   border-radius: 5px;
 }
-.team .team-member h4{
+
+.team .team-member h4 {
   text-align: center;
 }
+
 /* Ensure the image container doesn't take up too much space */
 .team .team-member .member-img {
-  flex-shrink: 0; /* Prevents image from squishing */
-  height: 220px;  /* Optional: Tweak this if you want more space for text */
+  flex-shrink: 0; 
+  height: 220px;  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1656,17 +1728,21 @@ section,
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px; /* Reduced padding slightly to fit 400px height */
+  padding: 15px; 
 }
-/* 3. BUTTON: The new .btn-details style */
+
+/* 3. BUTTON: The updated style */
 .team .team-member .member-info .btn-details {
-  /* Pushes the button to the very bottom */
+  /* --- CRITICAL UPDATE --- */
+  margin-top: auto; /* This pushes the button to the bottom of .member-info */
+  /* ----------------------- */
+
   /* Visual Styles */
-  background-color: #A02A2A; /* Static Red */
+  background-color: #A02A2A; 
   color: #fff;
   border: none;
   padding: 10px 24px;
-  border-radius: 6px; /* Slightly rounded */
+  border-radius: 6px; 
   
   /* Text & Interaction */
   font-weight: 600;
@@ -1677,7 +1753,7 @@ section,
 
 /* Hover State */
 .team .team-member .member-info .btn-details:hover {
-  background-color: #37CACA; /* Hover Cyan */
+  background-color: #37CACA; 
   color: #fff;
 }
 
