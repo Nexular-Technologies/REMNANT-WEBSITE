@@ -1,0 +1,113 @@
+:root {
+  --blue-gradient: linear-gradient(135deg, #4eb0ec 0%, #2070f0 100%);
+  --transition-speed: 0.4s;
+}
+
+.card-grid {
+  display: flex;
+  gap: 4px;
+  background: #000;
+  padding: 20px;
+  height: 500px;
+}
+
+.accenture-card {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--blue-gradient);
+  transition: flex var(--transition-speed) ease;
+}
+
+/* Base Gradient & Image Layers */
+.card-visuals {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.gradient-layer {
+  position: absolute;
+  inset: 0;
+  background: var(--blue-gradient);
+  opacity: 1;
+  transition: opacity var(--transition-speed);
+}
+
+.image-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0; /* Hidden by default */
+  transform: scale(1.1);
+  transition: opacity var(--transition-speed), transform 0.8s ease;
+}
+
+/* Hover States for Visuals */
+.accenture-card:hover .image-layer {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hover creates a dark tint over the image for text readability */
+.accenture-card:hover .image-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Text Content Styling */
+.card-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  background: white; /* Start with white background at the top */
+  color: black;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.accenture-card:hover .card-content {
+  background: transparent; /* Show the image/gradient below */
+  color: white;
+}
+
+/* Smooth Height Reveal */
+.expandable-section {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-speed) ease;
+}
+
+.accenture-card:hover .expandable-section {
+  grid-template-rows: 1fr;
+}
+
+.details-inner {
+  overflow: hidden;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  font-weight: 600;
+}
+
+.expand-footer {
+  border-top: 1px solid currentColor;
+  margin-top: 20px;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
