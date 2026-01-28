@@ -416,77 +416,88 @@ h6 {
   }
 }
 /*--------------------------------------------------------------
-# Service Modals - Updated for RMNT
+# Service Modals - Wide Premium Grid
 --------------------------------------------------------------*/
 
+@media (min-width: 992px) {
+    .modal-xl { max-width: 1000px; }
+}
+
 .service-modal-custom {
-    background-color: var(--heading-color) !important; /* Updated RMNT Red */
-    color: var(--contrast-color) !important;
-    border: 4px solid var(--contrast-color); 
+    background-color: #ffffff !important;
+    border: none;
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    text-align: center;
     overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.2);
 }
 
 .service-modal-custom .modal-header {
-    flex-direction: column;
-    padding-top: 2rem;
+    background-color: var(--heading-color) !important;
+    padding: 1.5rem 2.5rem;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .service-modal-custom .modal-title {
-    color: var(--contrast-color) !important; /* Title in header stays white for contrast */
-    font-weight: 900 !important;
+    color: #ffffff !important;
+    font-weight: 800 !important;
     font-size: 1.6rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 0;
-}
-
-.service-modal-custom .btn-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    filter: invert(1) grayscale(100%) brightness(200%);
-    opacity: 0.8;
-    z-index: 1060;
+    margin: 0;
 }
 
 .service-modal-custom .modal-body {
-    color: #ffffff !important; /* Black text as requested */
-    padding: 2.5rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 400; /* Increased from 300 for better readability on white */
-    line-height: 1.8;
+    padding: 3rem;
+    color: #333 !important;
+    text-align: left;
 }
 
-/* Modal Icon Styling */
-.modal-header-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px; 
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.modal-icon {
-    width: 100px; 
+.modal-icon-header {
+    width: 50px;
     height: auto;
-}
-/* Remove internal scroll from service modals */
-.service-modal-custom .modal-body {
-    overflow: hidden !important; /* Disables internal scrolling */
-    max-height: none !important; /* Allows the modal to grow with content */
+    margin-right: 20px;
+    filter: brightness(0) invert(1);
 }
 
-/* Ensure the modal dialog handles the height on the page instead */
-.modal-dialog-centered {
-    display: flex;
-    align-items: center;
-    min-height: calc(100% - 1rem);
+.service-highlight-box {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 6px solid var(--heading-color);
+    height: 100%;
 }
+
+.service-list-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr; /* Default for mobile */
+    gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .service-list-grid { grid-template-columns: 1fr 1fr; } /* Two columns for long lists */
+}
+
+.service-list-grid li {
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 20px;
+}
+
+.service-list-grid li::before {
+    content: "•";
+    color: var(--heading-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+ .btn-close{
+  color: white;
+ }
 /*------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
