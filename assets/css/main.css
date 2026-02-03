@@ -1,6 +1,6 @@
 --------------------------------------------------------------*/
 *{
-  margin-inline: 10px;
+  margin-inline: 15px !important;
 }
 /* Fonts */
 :root {
@@ -416,84 +416,133 @@ h6 {
   }
 }
 /*--------------------------------------------------------------
-# Service Modals - Wide Premium Grid
+# Service Modals - Wide Premium Grid (Compact No-Scroll)
 --------------------------------------------------------------*/
 
 @media (min-width: 992px) {
     .modal-xl { max-width: 1000px; }
 }
 
+/* 1. Limit the modal height to prevent page scrolling */
 .service-modal-custom {
     background-color: #ffffff !important;
     border: none;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+    max-height: 90vh; /* Limits height to 90% of the viewport */
+    display: flex;
+    flex-direction: column;
 }
 
+/* 2. Compact Header */
 .service-modal-custom .modal-header {
     background-color: var(--heading-color) !important;
-    padding: 1.5rem 2.5rem;
+    padding: 1rem 2rem; /* Reduced padding */
     border: none;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex-shrink: 0; /* Prevents header from shrinking */
 }
 
 .service-modal-custom .modal-title {
     color: #ffffff !important;
     font-weight: 800 !important;
-    font-size: 1.6rem;
+    font-size: 1.4rem; /* Slightly smaller */
     text-transform: uppercase;
     margin: 0;
 }
 
+/* 3. Compact Body with internal scroll if necessary */
 .service-modal-custom .modal-body {
-    padding: 3rem;
+    padding: 1.5rem 2.5rem; /* Reduced from 3rem */
     color: #333 !important;
     text-align: left;
+    overflow-y: auto; /* Scroll only the content if it overflows */
 }
 
 .modal-icon-header {
-    width: 50px;
+    width: 35px; /* Smaller icon to save vertical space */
     height: auto;
-    margin-right: 20px;
+    margin-right: 15px;
     filter: brightness(0) invert(1);
 }
 
 .service-highlight-box {
     background-color: #f8f9fa;
-    padding: 25px;
+    padding: 20px; /* Reduced from 25px */
     border-radius: 15px;
     border-left: 6px solid var(--heading-color);
-    height: 100%;
 }
 
+/* 4. Circle-Tick List Styles (No Overlap) */
 .service-list-grid {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: 1fr; /* Default for mobile */
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 8px; /* Tighter gap */
 }
 
 @media (min-width: 768px) {
-    .service-list-grid { grid-template-columns: 1fr 1fr; } /* Two columns for long lists */
+    .service-list-grid { grid-template-columns: 1fr 1fr; }
 }
 
 .service-list-grid li {
-    font-size: 0.95rem;
-    position: relative;
-    padding-left: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center; /* Perfect vertical centering */
+    gap: 12px;           /* Space between icon and text */
+    line-height: 1.3;
 }
 
 .service-list-grid li::before {
-    content: "•";
-    color: var(--heading-color);
-    position: absolute;
-    left: 0;
-    font-weight: bold;
+    content: "";
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background-color: rgba(160, 42, 42, 0.1);
+    border: 1px solid #A02A2A;
+    border-radius: 50%;
+    /* Centered Tick SVG */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23A02A2A'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* 5. Fixed Footer for Contact Button */
+.service-modal-custom .modal-footer {
+    padding: 0 2.5rem 1.5rem 2.5rem; /* Matches body side padding */
+    border: none;
+    justify-content: flex-start;
+    flex-shrink: 0; /* Keeps button fixed at bottom */
+}
+
+.btn-modal-contact {
+    background-color: #A02A2A;
+    color: #ffffff !important;
+    padding: 10px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+    display: inline-block;
+    border: 2px solid #A02A2A;
+}
+
+.btn-modal-contact:hover {
+    background-color: transparent;
+    color: #37CACA !important;
+    border-color: #37CACA;
+}
+
+/* Space saver: remove bottom margin from last p in column */
+.modal-body p:last-child {
+    margin-bottom: 0;
 }
 /*--------------------------------------------------------------
 # Global Footer - Fixed Spacing & Teal Brand
@@ -503,27 +552,29 @@ h6 {
   background-color: var(--accent-color) !important;
   font-size: 14px;
   position: relative;
-  /* Adds vertical breathing room */
-  padding: 60px 0 30px 0; 
+  padding: 60px 0 0 0; /* Bottom padding handled by copyright section */
 }
 
-/* Fixes the "Edge of Screen" issue */
+/* 500px Logo Specific Styling */
+.footer .footer-logo-custom {
+  height: auto;
+  width: 100%;
+  /* Force the large size on desktop */
+  max-width: 400px !important; 
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Ensure the row doesn't hit screen edges */
 .footer .footer-top .row {
-    padding-left: 15px;
-    padding-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .footer .footer-about, 
-.footer .footer-links {
-  /* This ensures text never touches the column boundaries */
+.footer .footer-links,
+.footer .footer-contact {
   padding: 0 15px; 
-}
-
-.footer .footer-about .logo img {
-  height: auto;
-  width: 100%;
-  max-width: 340px;
-  margin-bottom: 20px;
 }
 
 .footer .footer-contact p {
@@ -532,7 +583,7 @@ h6 {
   color: #ffffff !important;
 }
 
-/* Social Links Spacing */
+/* Social Links */
 .footer .social-links a {
   display: flex;
   align-items: center;
@@ -553,7 +604,7 @@ h6 {
   color: var(--accent-color);
 }
 
-/* Links List Spacing */
+/* Headings */
 .footer h4 {
   font-size: 18px;
   font-weight: 700;
@@ -561,6 +612,7 @@ h6 {
   padding-bottom: 10px;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   width: fit-content;
+  text-transform: uppercase;
 }
 
 .footer .footer-links ul {
@@ -570,17 +622,19 @@ h6 {
 }
 
 .footer .footer-links ul li {
-  padding: 8px 0;
+  padding: 5px 0;
 }
 
 .footer .footer-links ul a {
   color: rgba(255, 255, 255, 0.8) !important;
   text-decoration: none;
   transition: 0.3s;
+  text-transform: uppercase;
+  font-size: 13px;
 }
 
 .footer .footer-links ul a:hover {
-  color: #ffffff !important;
+  color: var(--heading-color) !important; /* Brand Teal */
   padding-left: 8px;
 }
 
@@ -591,7 +645,14 @@ h6 {
   background-color: rgba(0, 0, 0, 0.1); 
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-/*--------------------------------------------------------------
+
+/* Small screen adjustment for large logo */
+@media (max-width: 768px) {
+  .footer .footer-logo-custom {
+    max-width: 100% !important; /* Let it shrink on mobile */
+  }
+}
+/*--------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
 #preloader {
@@ -876,7 +937,6 @@ section,
 
 /* Vision Text */
 .vision-values .vision-text {
-  font-size: 1.25rem;
   line-height: 1.6;
   color: var(--default-color);
   margin-bottom: 0;
@@ -1387,6 +1447,130 @@ section,
 
 .services .service-item:hover {
   box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.1);
+}
+/*--------------------------------------------------------------
+# Modal Service Lists (Fixed Alignment)
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Service Modals - Force Fit No-Scroll
+--------------------------------------------------------------*/
+
+@media (min-width: 992px) {
+    .modal-xl { max-width: 1000px; }
+}
+
+.service-modal-custom {
+    background-color: #ffffff !important;
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+    /* Force modal to stay within 85% of screen height */
+    max-height: 85vh; 
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header: Compact and Fixed */
+.service-modal-custom .modal-header {
+    background-color: var(--heading-color) !important;
+    padding: 0.8rem 2rem; 
+    border: none;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevents header from shrinking */
+}
+
+.service-modal-custom .modal-title {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.modal-icon-header {
+    width: 30px; /* Reduced from 50px */
+    height: auto;
+    margin-right: 15px;
+    filter: brightness(0) invert(1);
+}
+
+/* Body: Internal Scroll Only */
+.service-modal-custom .modal-body {
+    padding: 1.5rem 2rem; 
+    color: #333 !important;
+    overflow-y: auto; /* Scroll bar appears here ONLY if text is too long */
+    flex-grow: 1;
+}
+
+.service-highlight-box {
+    background-color: #f8f9fa;
+    padding: 18px;
+    border-radius: 12px;
+    border-left: 5px solid var(--heading-color);
+}
+
+/* Circle-Tick Lists */
+.service-list-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+@media (min-width: 768px) {
+    .service-list-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.service-list-grid li {
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.3;
+}
+
+.service-list-grid li::before {
+    content: "";
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(160, 42, 42, 0.1);
+    border: 1px solid #A02A2A;
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23A02A2A'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Footer: Fixed at bottom */
+.service-modal-custom .modal-footer {
+    padding: 1rem 2rem 1.5rem;
+    border: none;
+    justify-content: flex-start;
+    flex-shrink: 0;
+}
+
+.btn-modal-contact {
+    background-color: #A02A2A;
+    color: #ffffff !important;
+    padding: 10px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+    border: 2px solid #A02A2A;
+}
+
+.btn-modal-contact:hover {
+    background-color: transparent;
+    color: #37CACA !important;
+    border-color: #37CACA;
 }
 
 /*--------------------------------------------------------------
@@ -2618,7 +2802,87 @@ section,
 .blog-details .meta-bottom .share i {
   padding-left: 5px;
 }
+/* Custom Remnant Theme Colors */
+:root {
+  --rmnt-teal: #37CACA;
+  --rmnt-red: #A02A2A;
+  --rmnt-dark: #1a1a1a;
+}
 
+.events-section { 
+  padding: 90px 0;
+
+ }
+
+.section-accent {
+  height: 5px;
+  width: 80px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.event-title {
+  font-weight: 800;
+  font-size: 2.8rem;
+  line-height: 1.2;
+}
+
+.event-copy {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4a4a4a;
+  text-align: justify;
+}
+
+/* Image Collage Styling */
+.img-collage {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.img-collage:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(55, 202, 202, 0.2);
+}
+
+/* CTA Button */
+.btn-event {
+  background-color: var(--rmnt-teal);
+  color: white;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid var(--rmnt-teal);
+  transition: 0.3s;
+}
+
+.btn-event:hover {
+  background-color: transparent;
+  color: var(--rmnt-teal);
+  transform: translateY(-3px);
+}
+
+.badge-outline {
+  border: 2px solid var(--rmnt-red);
+  color: var(--rmnt-red);
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.collage-img {
+  width: 100%;
+  height: 350px; /* Or whatever height you set */
+  object-fit: cover;
+  
+  /* This moves the "camera" up to the top 20% of the photo */
+  object-position: center 20%; 
+}
 /*--------------------------------------------------------------
 # Blog Comments Section
 --------------------------------------------------------------*/

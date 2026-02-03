@@ -70,10 +70,9 @@
 <body class="index-page about-page">
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container position-relative d-flex align-items-center justify-content-center">
-
       <nav id="navmenu-left" class="navmenu">
         <ul>
-          <li><a href="index.html" class="active">HOME</a></li>
+          <li><a href="index.html"  class="active" style="color: var(--rmnt-teal);">HOME</a></li>
           <li><a href="about.html">ABOUT</a></li>
           <li><a href="index.html#services">SERVICES</a></li>
         </ul>
@@ -86,14 +85,11 @@
       <nav id="navmenu-right" class="navmenu">
         <ul>
           <li><a href="team.html">TEAM</a></li>
-        <!----  <li><a href="privacy.html">EVENTS</a></li> -->
+          <li><a href="events.html" class="active" style="color: #A02A2A;">EVENTS</a></li>
           <li><a href="contact.html">CONTACT</a></li>
-          <li><a href="privacy_policy.html">EVENTS</a></li>
         </ul>
       </nav>
-
       <i class="mobile-nav-toggle bi bi-list"></i>
-
     </div>
   </header>
 
@@ -553,62 +549,53 @@
   </main>
 
 <footer id="footer" class="footer dark-background">
+  <div class="container footer-top">
+    <div class="row gy-5">
 
-  <div class="container footer-top py-5">
-    <div class="row gy-5 justify-content-between">
-      
-      <div class="col-lg-4 col-md-6 footer-about">
+      <div class="col-lg-5 col-md-12 footer-about">
         <a href="index.html" class="logo d-flex align-items-center mb-3">
-          <img src="./assets/img/updated_logo/White_update_logo.svg" alt="Rmnt Logo White">
+          <img src="./assets/img/updated_logo/White_update_logo.svg" alt="Rmnt Logo White" class="footer-logo-custom">
         </a>
-
-        <div class="footer-contact pt-2">
-          <p class="mb-1"><strong>Address:</strong>  57 Sloane Street, The Campus,</p>
-          <p class="mb-3"> 2nd Floor, The Gabba, Bryanston</p> 
-          <p class="mb-1"><strong>phone</strong> <span>0101572350</span></p>
-          <p class="mb-0"><strong>email</strong> <span>advisory@rmnt.co.za</span></p> 
-        </div>
-
-        <div class="social-links d-flex mt-4">
-          <a href="#" class="me-3"><i class="bi bi-twitter-x"></i></a>
-          <a href="#" class="me-3"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="me-3"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-linkedin"></i></a>
-        </div>
+        <p class="mt-4">Building legacies through independent financial advice and wholehearted commitment to our clients.</p>
+        </div> <div class="col-lg-3 col-md-6 footer-contact">
+        <h4>Contact Us</h4>
+        <p><strong>Address:</strong><br>
+           57 Sloane Street, The Campus,<br>
+           2nd Floor, The Gabba, Bryanston</p>
+        <p><strong>Phone:</strong> 010 157 2350</p>
+        <p><strong>Email:</strong> advisory@rmnt.co.za</p>
       </div>
 
       <div class="col-lg-4 col-md-6 footer-links">
-        <h4 class="mb-4 border-bottom pb-2" style="width: fit-content; border-color: rgba(255,255,255,0.3) !important;">Useful Links</h4>
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="index.html">HOME</a></li>
-          <li class="mb-2"><a href="about.html">ABOUT US</a></li>
-          <li class="mb-2"><a href="index.html#services">SERVICES</a></li>
-          <li class="mb-2"><a href="/team.html">TEAM</a></li>
-          <li class="mb-2"><a href="#">EVENTS</a></li>
-          <li class="mb-2"><a href="/privacy_policy.html">PRIVACY POLICY</a></li>
-          
-        </li>
-        </ul>
+        <h4>Useful Links</h4>
+        <div class="row">
+          <div class="col-6">
+            <ul class="list-unstyled"> <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="index.html#services">Services</a></li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <ul class="list-unstyled">
+              <li><a href="team.html">Team</a></li> <li><a href="privacy_policy.html">Privacy</a></li>
+              <li><a href="events.html">Events</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="col-lg-3 col-md-6 footer-links">
-        </div>
-
     </div>
   </div>
 
-  <div class="container copyright text-center mt-5 border-top pt-4">
+  <div class="container copyright text-center mt-4">
     <p class="mb-2">© <span>Copyright</span> <strong class="px-1 sitename">Remnant</strong></p>
-    <p class="small text-white-50 px-3">
+    <p class="small text-white-50">
       Remnant Advisory Services (Pty) Ltd is a juristic representative of <br> 
-      The Legacy Planning Institute (Pty) Ltd (LPi), FSP 51872, an authorised financial services provider. </p>
-    <div class="credits mt-2 small">
-      Designed by Nexular
-    </div>
+      The Legacy Planning Institute (Pty) Ltd (LPi), FSP 51872, an authorised financial services provider.
+    </p>
+    <div class="credits mt-2 small text-white-50">Designed by Nexular</div>
   </div>
-
 </footer>
-
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
@@ -630,7 +617,6 @@
   <!-- NOTE: This is loaded last to ensure all elements above it are ready -->
   <script src="assets/js/main.js"></script>
 
-    <!-- NOTE: Modal Info -->
 <div class="modal fade" id="modalFinancial" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content service-modal-custom">
@@ -643,15 +629,18 @@
         <div class="row g-5">
           <div class="col-lg-6">
             <p>Remnant believes that a financial plan acts as a guide as you go through life’s journey. It helps you stay in control of your income, expenses, and investments to manage your money and achieve your goals.</p>
-            <p>We service individuals, families, and businesses who need objective assistance in organising their financial affairs. We are passionate about providing sound advice to those who are serious about improving their financial situations.</p>
+            <p>We service individuals, families, and businesses who need objective assistance in organising their financial affairs.</p>
           </div>
           <div class="col-lg-6">
             <div class="service-highlight-box">
               <h6 class="fw-bold mb-3">Our Professional Approach</h6>
-              <p class="small">We utilize the FPI-approved, 6-step financial planning process. Remnant advisors provide independent financial advice and are wholeheartedly committed to acting in the best interests of their clients at all times.</p>
+              <p class="small">We utilize the FPI-approved, 6-step financial planning process. Remnant advisors provide independent financial advice and are wholeheartedly committed to acting in the best interests of their clients.</p>
             </div>
           </div>
         </div>
+      </div>
+      <div class="modal-footer justify-content-start border-0 pt-0">
+        <a href="#contact" class="btn-modal-contact" data-bs-dismiss="modal">Speak to an Advisor</a>
       </div>
     </div>
   </div>
@@ -668,8 +657,8 @@
       <div class="modal-body">
         <div class="row g-5 align-items-center">
           <div class="col-lg-6">
-            <p>Estate planning deals with the assessment and management of assets to ensure the estate is distributed according to the owner's wishes. It protects your beneficiaries from legal hassles in the event of your passing.</p>
-            <p><strong>The Role of Trusts:</strong> A trust allows the trustee the right to hold title to property for the benefit of the beneficiary. This can protect assets from creditors and potentially reduce estate duties.</p>
+            <p>Estate planning deals with the assessment and management of assets to ensure the estate is distributed according to the owner's wishes.</p>
+            <p><strong>The Role of Trusts:</strong> A trust allows the trustee the right to hold title to property for the benefit of the beneficiary.</p>
           </div>
           <div class="col-lg-6">
             <div class="service-highlight-box">
@@ -687,6 +676,9 @@
           </div>
         </div>
       </div>
+      <div class="modal-footer justify-content-start border-0 pt-0">
+        <a href="#contact" class="btn-modal-contact" data-bs-dismiss="modal">Speak to an Advisor</a>
+      </div>
     </div>
   </div>
 </div>
@@ -702,8 +694,8 @@
       <div class="modal-body">
         <div class="row g-5">
           <div class="col-lg-7">
-            <p>Retirement planning is the process of setting income goals and identifying the actions necessary to achieve them. Majority of people underprovide for retirement; Remnant strives to change that picture.</p>
-            <p>A solid plan gives the client and advisor a clearer picture of the financial position. Every decision that you make today contributes towards your future self at retirement.</p>
+            <p>Retirement planning is the process of setting income goals and identifying the actions necessary to achieve them.</p>
+            <p>A solid plan gives the client and advisor a clearer picture of the financial position. Every decision today contributes towards your future self.</p>
           </div>
           <div class="col-lg-5">
             <div class="service-highlight-box text-center d-flex align-items-center">
@@ -711,6 +703,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="modal-footer justify-content-start border-0 pt-0">
+        <a href="#contact" class="btn-modal-contact" data-bs-dismiss="modal">Speak to an Advisor</a>
       </div>
     </div>
   </div>
@@ -727,7 +722,7 @@
       <div class="modal-body">
         <div class="row g-5">
           <div class="col-lg-5">
-            <p>Investment Planning aligns your financial goals with your resources. As an independent firm, we provide unbiased advice to ensure your portfolio is cost-efficient and returns are optimised.</p>
+            <p>Investment Planning aligns your financial goals with your resources. We provide unbiased advice to ensure your portfolio is cost-efficient.</p>
           </div>
           <div class="col-lg-7">
             <div class="service-highlight-box">
@@ -746,6 +741,9 @@
           </div>
         </div>
       </div>
+      <div class="modal-footer justify-content-start border-0 pt-0">
+        <a href="#contact" class="btn-modal-contact" data-bs-dismiss="modal">Speak to an Advisor</a>
+      </div>
     </div>
   </div>
 </div>
@@ -761,7 +759,7 @@
       <div class="modal-body">
         <div class="row g-5">
           <div class="col-lg-7">
-            <p>Our strategies focus on minimizing your tax burden while maximizing your investment returns. We integrate technical tax planning with a deep understanding of how financial decisions impact your overall wealth.</p>
+            <p>Our strategies focus on minimizing your tax burden while maximizing your investment returns.</p>
           </div>
           <div class="col-lg-5">
             <div class="service-highlight-box">
@@ -775,6 +773,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="modal-footer justify-content-start border-0 pt-0">
+        <a href="#contact" class="btn-modal-contact" data-bs-dismiss="modal">Speak to an Advisor</a>
       </div>
     </div>
   </div>
@@ -791,8 +792,7 @@
       <div class="modal-body">
         <div class="row g-5">
           <div class="col-lg-6">
-            <p>Remnant provides bespoke employee benefits solutions. Offering these benefits enables employees to better manage life’s financial uncertainties, through structured retirement and healthcare goals.</p>
-            <p>We work with small, medium, and large companies to ensure benefits packages remain current, competitive, and relevant.</p>
+            <p>Remnant provides bespoke employee benefits solutions to help manage life’s financial uncertainties.</p>
           </div>
           <div class="col-lg-6">
             <div class="service-highlight-box">
@@ -809,6 +809,9 @@
           </div>
         </div>
       </div>
+      <div class="modal-footer justify-content-start border-0 pt-0">
+        <a href="#contact" class="btn-modal-contact" data-bs-dismiss="modal">Speak to an Advisor</a>
+      </div>
     </div>
   </div>
 </div>
@@ -824,17 +827,16 @@
       <div class="modal-body">
         <div class="row g-5">
           <div class="col-lg-5">
-            <p>A fiduciary acts independently according to the terms of the trust or estate. Having a fiduciary you can trust to deal with legal matters when you have passed away is invaluable.</p>
-            <p>Financial planning starts at the Will; we strive to ensure all clients have a Will in place to protect their loved ones.</p>
+            <p>A fiduciary acts independently. Having a fiduciary you can trust to deal with legal matters is invaluable.</p>
           </div>
           <div class="col-lg-7">
             <div class="service-highlight-box">
-              <h6 class="fw-bold mb-3">Fiduciary Services We Offer:</h6>
+              <h6 class="fw-bold mb-3">Services We Offer:</h6>
               <ul class="service-list-grid">
                 <li>Will drafting & collection</li>
                 <li>Amendments & Custody</li>
                 <li>Worldwide & Offshore Wills</li>
-                <li>Trust planning & implementation</li>
+                <li>Trust planning</li>
                 <li>Trust audits</li>
                 <li>Trustee appointment</li>
                 <li>Trust administration</li>
@@ -842,6 +844,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="modal-footer justify-content-start border-0 pt-0">
+        <a href="#contact" class="btn-modal-contact" data-bs-dismiss="modal">Speak to an Advisor</a>
       </div>
     </div>
   </div>
@@ -858,8 +863,7 @@
       <div class="modal-body">
         <div class="row g-5">
           <div class="col-lg-6">
-            <p>Risk analysis identifies and prioritises risk factors that may affect one financially or physically. Our goal is to minimise financial loss through continuous assessment.</p>
-            <p>We advise on risk management and help strategise around any future risk one might face.</p>
+            <p>Risk analysis identifies risk factors that may affect one financially. Our goal is to minimise financial loss.</p>
           </div>
           <div class="col-lg-6">
             <div class="service-highlight-box">
@@ -874,6 +878,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="modal-footer justify-content-start border-0 pt-0">
+        <a href="#contact" class="btn-modal-contact" data-bs-dismiss="modal">Speak to an Advisor</a>
       </div>
     </div>
   </div>
@@ -890,7 +897,7 @@
       <div class="modal-body">
         <div class="row g-5">
           <div class="col-lg-6">
-            <p>Short-term insurance protects you from the financial burdens of property loss. We facilitate a full market analysis to ensure increased cover and savings on premiums.</p>
+            <p>Short-term insurance protects you from the financial burdens of property loss.</p>
           </div>
           <div class="col-lg-6">
             <div class="service-highlight-box">
@@ -905,6 +912,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="modal-footer justify-content-start border-0 pt-0">
+        <a href="#contact" class="btn-modal-contact" data-bs-dismiss="modal">Speak to an Advisor</a>
       </div>
     </div>
   </div>
