@@ -413,25 +413,31 @@ h6 {
     overflow: hidden;
   }
 }
-* --- Mobile Optimization (Under 768px) --- */
+/* --- Mobile Optimization --- */
 @media (max-width: 768px) {
   .header .logo {
-    /* Ensures it takes up only the space it needs in the flex row */
-    flex: 0 1 auto; 
+    /* Ensure the container allows the logo to be wide */
+    width: auto;
+    flex: 0 0 auto;
   }
 
   .header .logo img {
-    /* Scale down for mobile screens */
-    width: 180px; 
-    /* Ensures it never overflows the screen width */
-    max-width: 60vw; 
+    /* Increase size for mobile so tagline is visible */
+    /* 280px or 70% of the screen width, whichever is smaller */
+    width: 280px; 
+    max-width: 75vw; 
+    
+    /* Extra padding to ensure it doesn't hit the edges */
+    padding: 10px 0; 
   }
 }
 
-/* --- Extra Small Screens (Under 400px) --- */
-@media (max-width: 400px) {
+/* --- Small Mobile Tweak --- */
+@media (max-width: 480px) {
   .header .logo img {
-    width: 150px;
+    /* Slightly larger relative size for very small screens */
+    width: 300px;
+    max-width: 85vw;
   }
 }
 /*--------------------------------------------------------------
