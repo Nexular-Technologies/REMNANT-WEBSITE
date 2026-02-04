@@ -345,7 +345,14 @@ h6 {
   /* Add an empty div or placeholder with order: 3 in your HTML if you need 
      perfect centering relative to the toggle button */
 }
-
+@media (max-width: 768px) {
+  .header .logo img {
+    /* Use 'vw' so it scales perfectly with the screen size */
+    width: 70vw !important; 
+    max-width: 300px !important; /* Cap it at 300px so it doesn't get huge */
+    height: auto;
+  }
+}
 /* Specific Tweak for very small screens */
 @media (max-width: 480px) {
   .header .container {
