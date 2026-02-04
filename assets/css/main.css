@@ -332,15 +332,7 @@ h6 {
 /*--------------------------------------------------------------
 # Navigation Menu Layout (Mobile < 1200px)
 --------------------------------------------------------------*/
-/*--------------------------------------------------------------
-# Navigation Menu Layout (Mobile < 1200px)
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-# Navigation Menu Layout (Mobile < 1200px)
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-# Navigation Menu Layout (Mobile < 1200px)
---------------------------------------------------------------*/
+
 @media (max-width: 1200px) {
 
   /* 1. Hide original desktop positions */
@@ -419,6 +411,27 @@ h6 {
   /* Prevent page scrolling when menu is open */
   body.mobile-nav-active {
     overflow: hidden;
+  }
+}
+* --- Mobile Optimization (Under 768px) --- */
+@media (max-width: 768px) {
+  .header .logo {
+    /* Ensures it takes up only the space it needs in the flex row */
+    flex: 0 1 auto; 
+  }
+
+  .header .logo img {
+    /* Scale down for mobile screens */
+    width: 180px; 
+    /* Ensures it never overflows the screen width */
+    max-width: 60vw; 
+  }
+}
+
+/* --- Extra Small Screens (Under 400px) --- */
+@media (max-width: 400px) {
+  .header .logo img {
+    width: 150px;
   }
 }
 /*--------------------------------------------------------------
