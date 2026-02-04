@@ -1084,25 +1084,22 @@ section,
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
 .hero {
   padding: 0;
+  background-color: #000;
+  overflow: hidden;
 }
 
 .hero .carousel {
   width: 100%;
   min-height: calc(100vh - 75px);
-  padding: 0;
-  margin: 0;
   position: relative;
 }
 
-@media (max-height: 500px),
-(max-width: 1200px) {
-  .hero .carousel {
-    min-height: calc(100vh - 48px);
-  }
-}
-
+/* Base Image - Desktop (Cover) */
 .hero img {
   position: absolute;
   inset: 0;
@@ -1113,72 +1110,92 @@ section,
   z-index: 1;
 }
 
+/* Desktop Item Layout */
 .hero .carousel-item {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
-  /* Default alignment for small screens: center content at the bottom */
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-/* LEFT ALIGNMENT FIX FOR LARGE SCREENS (992px and up) */
-@media (min-width: 992px) {
-  .hero .carousel-item {
-    /* Align content (the container) to the start (left) */
-    justify-content: flex-start;
-    /* Center the container vertically in the middle of the banner */
-    align-items: center;
-  }
-}
-
+/* Base Container - Desktop */
 .hero .container {
-  background: color-mix(in srgb, var(--surface-color), transparent 40%);
+  background: color-mix(in srgb, var(--surface-color), transparent 20%);
   position: relative;
-  /* Default text alignment for small screens */
-  text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  margin-bottom: 50px;
+  text-align: left;
+  padding: 40px;
   border-top: 4px solid var(--accent-color);
   z-index: 3;
+  max-width: 600px;
+  margin-left: 100px;
 }
 
-/* CONTAINER POSITIONING AND TEXT ALIGNMENT FOR LARGE SCREENS (992px and up) */
-@media (min-width: 992px) {
-  .hero .container {
-    /* Limits container width to half the banner */
-    max-width: 50%;
-    /* Aligns text left inside the container */
-    text-align: left;
-    /* Pushes the container away from the left edge */
-    margin-left: 100px;
-    margin-right: 0;
-    margin-bottom: 0;
-  }
-}
-
-/* Existing smaller screen margin adjustment (modified or removed if no longer needed) */
-@media (max-width: 1200px) {
-  .hero .container {
-    margin-left: 50px;
-    margin-right: 50px;
-  }
-}
-
-.hero h2 {
-  margin-bottom: 20px;
-  font-size: 36px;
-  font-weight: 700;
-}
-
+/* --- MOBILE VERSION (Screens under 768px) --- */
 @media (max-width: 768px) {
-  .hero h2 {
-    font-size: 30px;
+  .hero .carousel {
+    min-height: auto !important;
   }
+
+  /* Force display:block to ensure images take up space */
+  .hero .carousel-item {
+    position: relative;
+    display: none; /* Let Bootstrap handle display */
+    flex-direction: column;
+    min-height: auto;
+    inset: auto;
+  }
+
+  .hero .carousel-item.active {
+    display: flex; /* Show active slide */
+  }
+
+  /* Showing the WHOLE picture */
+  .hero img {
+    position: relative;
+    height: auto !important;
+    width: 100% !important;
+    object-fit: contain !important;
+    z-index: 1;
+  }
+
+  /* Left Align & Spacing */
+  .hero .container {
+    margin: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+    padding: 25px 20px;
+    background: var(--surface-color);
+    border-top: 4px solid var(--accent-color);
+  }
+
+  /* Smaller Mobile H1 */
+  .hero h1 {
+    font-size: 24px !important; /* Shrunken for mobile */
+    margin-bottom: 15px;
+  }
+
+  .hero p {
+    font-size: 15px !important;
+  }
+
+  .hero .btn-get-started {
+    margin: 10px 0 0 0; /* Strict left alignment */
+  }
+}
+
+/* --- General Typography (Desktop Defaults) --- */
+.hero h1 {
+  margin-bottom: 20px;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--contrast-color);
+}
+
+.hero p {
+  font-size: 18px;
+  color: var(--contrast-color);
 }
 
 .hero .btn-get-started {
@@ -1186,96 +1203,13 @@ section,
   font-size: 15px;
   letter-spacing: 1px;
   display: inline-block;
-  padding: 8px 32px;
+  padding: 10px 35px;
   transition: 0.5s;
-  margin: 10px;
   border-radius: 4px;
   color: var(--contrast-color);
   border: 2px solid var(--accent-color);
+  text-decoration: none;
 }
-
-.hero .btn-get-started:hover {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-}
-
-.hero .carousel-control-prev {
-  justify-content: start;
-}
-
-@media (min-width: 640px) {
-  .hero .carousel-control-prev {
-    padding-left: 15px;
-  }
-}
-
-.hero .carousel-control-next {
-  justify-content: end;
-}
-
-@media (min-width: 640px) {
-  .hero .carousel-control-next {
-    padding-right: 15px;
-  }
-}
-
-.hero .carousel-control-next-icon,
-.hero .carousel-control-prev-icon {
-  background: none;
-  font-size: 26px;
-  line-height: 0;
-  background: color-mix(in srgb, var(--default-color), transparent 90%);
-  border-radius: 50px;
-  color: var(--contrast-color);
-  transition: 0.3s;
-  width: 54px;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero .carousel-control-prev,
-.hero .carousel-control-next {
-  transition: 0.3s;
-  opacity: 0.5;
-}
-
-.hero .carousel-control-prev:focus,
-.hero .carousel-control-next:focus {
-  opacity: 0.5;
-}
-
-.hero .carousel-control-prev:hover,
-.hero .carousel-control-next:hover {
-  opacity: 0.9;
-}
-
-.hero .carousel-control-prev:hover .carousel-control-next-icon,
-.hero .carousel-control-prev:hover .carousel-control-prev-icon,
-.hero .carousel-control-next:hover .carousel-control-next-icon,
-.hero .carousel-control-next:hover .carousel-control-prev-icon {
-  background: var(--accent-color);
-  color: var(--default-color);
-}
-
-.hero .carousel-indicators li {
-  cursor: pointer;
-  background: var(--default-color);
-  overflow: hidden;
-  border: 0;
-  width: 12px;
-  height: 12px;
-  border-radius: 50px;
-  opacity: 0.6;
-  transition: 0.3s;
-}
-
-.hero .carousel-indicators li.active {
-  opacity: 1;
-  background: var(--accent-color);
-}
-
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
