@@ -532,8 +532,8 @@ body.mobile-nav-active {
 # Global Footer - Fixed Spacing & Teal Brand
 --------------------------------------------------------------*/
 .footer {
-  color: #ffffff !important;
-  background-color: var(--accent-color) !important;
+  color: #000000 !important;
+
   font-size: 14px;
   position: relative;
   padding: 60px 0 0 0; /* Bottom padding handled by copyright section */
@@ -564,7 +564,7 @@ body.mobile-nav-active {
 .footer .footer-contact p {
   margin-bottom: 10px;
   line-height: 1.6;
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 
 /* Social Links */
@@ -577,24 +577,25 @@ body.mobile-nav-active {
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.4);
   font-size: 18px;
-  color: #ffffff;
+  color: #000000;
   margin-right: 15px;
   transition: 0.3s;
   text-decoration: none;
 }
 
 .footer .social-links a:hover {
-  background-color: #ffffff;
+  background-color: #000000;
   color: var(--accent-color);
 }
 
 /* Headings */
 .footer h4 {
+  color: #000;
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 25px;
   padding-bottom: 10px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
   width: fit-content;
   text-transform: uppercase;
 }
@@ -610,7 +611,7 @@ body.mobile-nav-active {
 }
 
 .footer .footer-links ul a {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(0, 0, 0, 0.8) !important;
   text-decoration: none;
   transition: 0.3s;
   text-transform: uppercase;
@@ -618,7 +619,7 @@ body.mobile-nav-active {
 }
 
 .footer .footer-links ul a:hover {
-  color: var(--heading-color) !important; /* Brand Teal */
+  color: #000000 !important; /* Brand Teal */
   padding-left: 8px;
 }
 
@@ -626,14 +627,15 @@ body.mobile-nav-active {
 .footer .copyright {
   margin-top: 50px;
   padding: 40px 20px;
-  background-color: rgba(0, 0, 0, 0.1); 
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color:var(--rmnt-red);
+  border-top: 5px solid var(--rmnt-teal);
 }
 
 /* Small screen adjustment for large logo */
 @media (max-width: 768px) {
   .footer .footer-logo-custom {
     max-width: 100% !important; /* Let it shrink on mobile */
+    color: white;
   }
 }
 /*--------------------------------------------------------
