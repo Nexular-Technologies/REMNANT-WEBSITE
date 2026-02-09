@@ -4,10 +4,10 @@
   --heading-font: "Raleway", sans-serif;
   --nav-font: "Nunito", sans-serif;
   --background-color: #ffffff;
-  --heading-color: #A02A2A;
-  --accent-color: #37CACA;
-  --nav-color: #A02A2A;
-  --nav-hover-color: #37CACA;
+  --heading-color: #a02a2a;
+  --accent-color: #37caca;
+  --nav-color: #a02a2a;
+  --nav-hover-color: #37caca;
   --nav-mobile-background-color: #ffffff;
 }
 
@@ -18,8 +18,11 @@
   font-family: var(--nav-font);
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
   transition: all 0.4s ease-in-out;
+  
 }
-
+.navbar-nav {
+  visibility: visible !important;
+}
 .logo-img {
   max-height: 200px; /* Logo at 200px height */
   width: auto;
@@ -30,48 +33,47 @@
   z-index: 1050;
   padding: 0;
 }
+.nav-left-group, .nav-right-group {
+  position: relative;
+  z-index: 1060; /* Higher than the brand */
+}
 
 /* 3. DESKTOP CENTERING FIX */
 @media (min-width: 992px) {
-  .navbar .container {
-    position: relative; /* Essential for the absolute logo to center correctly */
-    display: flex;
+  #mainNav {
+    display: flex !important;
+    width: 100%;
     align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-left-group, 
+  .nav-right-group {
+    flex: 1; /* Each takes exactly 50% of available width */
+    display: flex;
+  }
+
+  .nav-left-group {
+    justify-content: center; /* Centers items within the left half */
+    padding-right: 110px;    /* Gutter for the 220px logo */
+  }
+
+  .nav-right-group {
+    justify-content: center; /* Centers items within the right half */
+    padding-left: 110px;     /* Gutter for the 220px logo */
   }
 
   .navbar-brand {
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    z-index: 1000;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    width: 220px; /* Match or slightly exceed your logo width */
-  }
-
-  /* Clear the 6rem padding you had earlier—it's likely too small for a 200px logo */
-  .nav-left-group { 
-    padding-right: 110px !important; /* Half of logo width + small buffer */
-  }
-  
-  .nav-right-group { 
-    padding-left: 110px !important; /* Half of logo width + small buffer */
-  }
-}
-
-/* Specific fix for the 1024px - 1200px range where things get squished */
-@media (min-width: 992px) and (max-width: 1200px) {
-  .nav-link {
-    margin: 0 5px; /* Reduce link spacing so they don't wrap */
-    font-size: 0.9rem;
   }
 }
 
 /* 4. NAVIGATION LINKS & HOVER */
 .nav-link {
-  font-weight: 700;
   color: var(--nav-color) !important;
   text-transform: uppercase;
   font-size: 1rem; /* Slightly larger to match the massive logo */
@@ -82,7 +84,7 @@
 }
 
 .nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 3px;
@@ -92,12 +94,12 @@
   transition: width 0.3s ease;
 }
 
-.nav-link:hover::after, 
+.nav-link:hover::after,
 .nav-link.active::after {
   width: 100%;
 }
 
-.nav-link:hover, 
+.nav-link:hover,
 .nav-link.active {
   color: var(--nav-hover-color) !important;
 }
@@ -111,7 +113,9 @@
   padding: 0;
 }
 
-.navbar-toggler:focus { box-shadow: none; }
+.navbar-toggler:focus {
+  box-shadow: none;
+}
 
 .toggler-icon {
   display: block;
@@ -120,12 +124,18 @@
   width: 100%;
   background: var(--heading-color);
   border-radius: 2px;
-  transition: .25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
-.top-bar { top: 0px; }
-.middle-bar { top: 10px; }
-.bottom-bar { top: 20px; }
+.top-bar {
+  top: 0px;
+}
+.middle-bar {
+  top: 10px;
+}
+.bottom-bar {
+  top: 20px;
+}
 
 .navbar-toggler:not(.collapsed) .top-bar {
   top: 10px;
@@ -142,16 +152,10 @@
   transform: rotate(-135deg);
 }
 
-/* 6. MOBILE RESPONSIVENESS */
+/* 6. MOBILE RESPONSIVENESS (Tablets/General Mobile) */
 @media (max-width: 991px) {
-  .navbar { padding: 1.5rem 0; }
-  
-  .navbar-collapse {
-    background: var(--nav-mobile-background-color);
-    padding: 2.5rem;
-    margin-top: 20px;
-    border-radius: 12px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  .navbar {
+    padding: 1rem 0;
   }
 
   .navbar-brand {
@@ -160,6 +164,122 @@
   }
 
   .logo-img {
-    max-height: 130px; /* Scaled down for mobile usability */
+    max-height: 80px; /* Balanced for tablet */
+  }
+
+  /* Hamburger Bars Base Style */
+  .toggler-icon {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: var(--heading-color);
+    border-radius: 2px;
+    transition: 0.25s ease-in-out;
+  }
+
+  .top-bar { top: 0px; }
+  .middle-bar { top: 10px; }
+  .bottom-bar { top: 20px; }
+}
+
+/* 7. SMALL DEVICE OPTIMIZATION (425px and below) */
+@media (max-width: 425px) {
+  /* Force Side-by-Side Layout */
+  .navbar .container {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 10px 15px !important;
+  }
+
+  .navbar-brand {
+    margin: 0 !important;
+    max-width: 70%;
+    flex-shrink: 1;
+  }
+
+  .logo-img {
+    max-height: 100% !important; /* Adjusted to fit row perfectly */
+    width: auto;
+  }
+
+  /* The Hamburger Button & Animated X */
+  .navbar-toggler {
+    margin: 0 !important;
+    flex-shrink: 0;
+    z-index: 2100 !important;
+    position: relative;
+    width: 35px;
+    height: 24px;
+    border: none;
+  }
+
+  /* Morph to 'X' when menu is open (not .collapsed) */
+  .navbar-toggler:not(.collapsed) .top-bar {
+    top: 10px;
+    transform: rotate(135deg);
+  }
+
+  .navbar-toggler:not(.collapsed) .middle-bar {
+    opacity: 0;
+    left: -20px;
+  }
+
+  .navbar-toggler:not(.collapsed) .bottom-bar {
+    top: 10px;
+    transform: rotate(-135deg);
+  }
+
+  /* Full-Screen Solid Overlay */
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+    margin: 0 !important;
+  }
+
+  .navbar-collapse.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Staggered Animations */
+  .navbar-nav .nav-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease-in-out;
+    list-style: none;
+  }
+
+  .navbar-collapse.show .nav-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .navbar-collapse.show .nav-item:nth-child(1) { transition-delay: 0.1s; }
+  .navbar-collapse.show .nav-item:nth-child(2) { transition-delay: 0.2s; }
+  .navbar-collapse.show .nav-item:nth-child(3) { transition-delay: 0.3s; }
+  .navbar-collapse.show .nav-item:nth-child(4) { transition-delay: 0.4s; }
+  .navbar-collapse.show .nav-item:nth-child(5) { transition-delay: 0.5s; }
+  .navbar-collapse.show .nav-item:nth-child(6) { transition-delay: 0.6s; }
+
+  .nav-link {
+    font-size: 1.4rem !important;
+    padding: 12px 0 !important;
+    text-align: center;
   }
 }

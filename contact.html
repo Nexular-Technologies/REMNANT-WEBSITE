@@ -55,39 +55,41 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/navbar.css">
 </head>
 
 <body class="contact-page">
-<header id="header" class="header d-flex align-items-center sticky-top">
-  <div class="container position-relative d-flex align-items-center justify-content-center">
+<header>
+  <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="assets/img/updated_logo/Logo_updated.svg" alt="REMNANT Logo" class="logo-img" height="40">
+      </a>
 
-    <nav id="navmenu-left" class="navmenu">
-      <ul>
-        <li>
-          <a href="index.html" class="active" style="color: var(--rmnt-teal)">HOME</a>
-        </li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="index.html#services">SERVICES</a></li>
-      </ul>
-    </nav>
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="toggler-icon top-bar"></span>
+        <span class="toggler-icon middle-bar"></span>
+        <span class="toggler-icon bottom-bar"></span>
+      </button>
 
-    <a href="index.html" class="logo d-flex align-items-center">
-      <img src="assets/img/updated_logo/Logo_updated.svg" alt="Rmnt Logo" />
-    </a>
-
-    <nav id="navmenu-right" class="navmenu">
-      <ul>
-        <li><a href="team.html">TEAM</a></li>
-        <li>
-          <a href="events.html" class="active" style="color: #a02a2a">EVENTS</a>
-        </li>
-        <li><a href="contact.html">CONTACT</a></li>
-      </ul>
-    </nav>
-
-    <i class="mobile-nav-toggle bi bi-list"></i>
-
-  </div>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <div class="nav-left-group">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link " href="/index.html">HOME</a></li>
+            <li class="nav-item"><a class="nav-link" href="/about.html">ABOUT</a></li>
+            <li class="nav-item"><a class="nav-link" href="/index.html#services">SERVICES</a></li>
+          </ul>
+        </div>
+        <div class="nav-right-group">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/team.html">TEAM</a></li>
+            <li class="nav-item"><a class="nav-link" href="/events.html">EVENTS</a></li>
+            <li class="nav-item"><a class="nav-link active" href="/contact.html">CONTACT</a></li>
+          </ul>
+        </div>
+      </div> 
+    </div> 
+  </nav>
 </header>
 
   <main class="main">

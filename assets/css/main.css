@@ -6,36 +6,26 @@
   --nav-font: "Nunito", sans-serif;
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
-  --background-color: #ffffff;
-  /* Background color for the entire website, including individual sections */
-  --default-color: #444444;
-  /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #A02A2A;
-  /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #37CACA;
-  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #A02A2A;
-  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff;
-  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
-}
+  /* --- 1. Global Brand Colors --- */
+  --background-color: #ffffff; /* Page Background */
+  --default-color: #444444;    /* Standard Text */
+  --heading-color: #A02A2A;    /* Brand Red/Burgundy */
+  --accent-color: #37CACA;     /* Brand Teal */
+  --surface-color: #A02A2A;    /* Box/Card Background */
+  --contrast-color: #ffffff;   /* Text on Dark/Teal */
 
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
-:root {
-  --nav-color: #A02A2A;
-  /* The default color of the main navmenu links */
-  --nav-hover-color: #37CACA;
-  /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff;
-  /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff;
-  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #444444;
-  /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #37CACA;
-  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  /* --- 2. Nav Menu (Linked to Global Colors) --- */
+  /* By using var() here, the Nav updates automatically when you change Global colors */
+  --nav-color: var(--heading-color); 
+  --nav-hover-color: var(--accent-color);
+  --nav-mobile-background-color: var(--background-color);
+  --nav-dropdown-background-color: var(--background-color);
+  --nav-dropdown-color: var(--default-color);
+  --nav-dropdown-hover-color: var(--accent-color);
+
+  /* --- 3. Functional Settings --- */
+  scroll-behavior: smooth;
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -76,7 +66,9 @@ body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
-  padding-inline: 15px; /* Use padding on the body, not margin on everything */
+  /* Reset padding to 0 and handle 15px inside containers to prevent alignment issues */
+  padding: 0 !important; 
+  margin: 0 !important;
   overflow-x: hidden;   /* Prevents accidental horizontal scrolling */
 }
 
@@ -84,6 +76,7 @@ body {
 .container {
   padding-right: 15px !important;
   padding-left: 15px !important;
+
 }
 
 
@@ -161,65 +154,6 @@ h6 {
     transform: rotate(360deg);
   }
 }
-
-/* ... Keep all your existing CSS above this section ... */
-
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
-:root {
-  --nav-color: #A02A2A;
-  /* The default color of the main navmenu links */
-  --nav-hover-color: var(--heading-color);
-  /* FIX: Now uses --heading-color for hover/active state, as requested */
-  --nav-mobile-background-color: #ffffff;
-  /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff;
-  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #444444;
-  /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #37CACA;
-  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
-}
-
-/* ... existing CSS ... */
-/* ... Keep all your existing CSS above this section ... */
-
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
-:root {
-  --nav-color: #A02A2A;
-  /* The default color of the main navmenu links */
-  --nav-hover-color: var(--accent-color);
-  /* FIX: Now uses --accent-color for hover/active state, as requested */
-  --nav-mobile-background-color: #ffffff;
-  /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff;
-  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #444444;
-  /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #37CACA;
-  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
-}
-
-/* ... existing CSS ... */
-
-/* ... Keep all your existing CSS above this section ... */
-
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
-:root {
-  --nav-color: #A02A2A;
-  /* The default color of the main navmenu links */
-  --nav-hover-color: var(--accent-color);
-  /* FIX: Now uses --accent-color for hover/active state, as requested */
-  --nav-mobile-background-color: #ffffff;
-  /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff;
-  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #444444;
-  /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #37CACA;
-  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
-}
-
-
 /*--------------------------------------------------------------
 # Service Modals - Wide Premium Grid (Compact No-Scroll)
 --------------------------------------------------------------*/
@@ -459,13 +393,14 @@ h6 {
     color: white;
   }
 }
-/*--------------------------------------------------------
-# Preloader
+/*--------------------------------------------------------------
+# Preloader - Highest layer, but standardized
 --------------------------------------------------------------*/
 #preloader {
   position: fixed;
   inset: 0;
-  z-index: 999999;
+  /* Reduced from 999999 to 9999 to prevent browser rendering glitches */
+  z-index: 9999; 
   overflow: hidden;
   background: var(--background-color);
   transition: all 0.6s ease-out;
@@ -477,6 +412,7 @@ h6 {
   top: calc(50% - 30px);
   left: calc(50% - 30px);
   border: 6px solid #ffffff;
+  /* Uses your unified variables for colors */
   border-color: var(--accent-color) transparent var(--heading-color) transparent;
   border-radius: 50%;
   width: 60px;
@@ -485,30 +421,29 @@ h6 {
 }
 
 @keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /*--------------------------------------------------------------
-# Scroll Top Button
+# Scroll Top Button - Standardized UI Layer
 --------------------------------------------------------------*/
 .scroll-top {
   position: fixed;
-  visibility: hidden;
+  visibility: collapse;
   opacity: 0;
   right: 15px;
   bottom: 15px;
-  z-index: 99999;
+  /* Set lower than preloader but higher than navbar (1000) */
+  z-index: 2000; 
   background-color: var(--accent-color);
   width: 40px;
   height: 40px;
   border-radius: 4px;
   transition: all 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .scroll-top i {
@@ -885,9 +820,6 @@ section,
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-/*--------------------------------------------------------------
-# Hero Section
---------------------------------------------------------------*/
 .hero {
   padding: 0;
   background-color: #000;
@@ -896,7 +828,8 @@ section,
 
 .hero .carousel {
   width: 100%;
-  min-height: calc(100vh - 75px);
+  /* Subtract 240px to account for the large header and avoid overlap */
+  min-height: calc(100vh - 240px);
   position: relative;
 }
 
@@ -916,42 +849,42 @@ section,
   position: absolute;
   inset: 0;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-start; /* Moved back to the left */
   align-items: center;
 }
 
 /* Base Container - Desktop */
 .hero .container {
+  /* Semi-transparent background for readability */
   background: color-mix(in srgb, var(--surface-color), transparent 20%);
   position: relative;
-  text-align: left;
-  padding: 40px;
+  text-align: left; /* Text aligned left */
+  padding: 30px; /* Smaller padding for a more compact look */
   border-top: 4px solid var(--accent-color);
   z-index: 3;
-  max-width: 600px;
-  margin-left: 100px;
+  max-width: 500px; /* Smaller width for a sleeker profile */
+  margin-left: 8%; /* Adjust this percentage to move further left/right */
 }
 
 /* --- MOBILE VERSION (Screens under 768px) --- */
 @media (max-width: 768px) {
   .hero .carousel {
     min-height: auto !important;
+    margin-top: 10px;
   }
 
-  /* Force display:block to ensure images take up space */
   .hero .carousel-item {
     position: relative;
-    display: none; /* Let Bootstrap handle display */
+    display: none; 
     flex-direction: column;
     min-height: auto;
     inset: auto;
   }
 
   .hero .carousel-item.active {
-    display: flex; /* Show active slide */
+    display: flex; 
   }
 
-  /* Showing the WHOLE picture */
   .hero img {
     position: relative;
     height: auto !important;
@@ -960,7 +893,7 @@ section,
     z-index: 1;
   }
 
-  /* Left Align & Spacing */
+  /* Keep mobile centered for better thumb-reach and UX */
   .hero .container {
     margin: 0 !important;
     width: 100%;
@@ -971,9 +904,8 @@ section,
     border-top: 4px solid var(--accent-color);
   }
 
-  /* Smaller Mobile H1 */
   .hero h1 {
-    font-size: 24px !important; /* Shrunken for mobile */
+    font-size: 24px !important; 
     margin-bottom: 15px;
   }
 
@@ -982,34 +914,48 @@ section,
   }
 
   .hero .btn-get-started {
-    margin: 10px 0 20px 0; /* Strict left alignment */
+    margin: 10px 0 20px 0; /* Left aligned button for mobile */
   }
 }
 
 /* --- General Typography (Desktop Defaults) --- */
 .hero h1 {
-  margin-bottom: 20px;
-  font-size: 48px;
+  margin-bottom: 15px; /* Tighter spacing */
+  font-size: 40px; /* Slightly smaller for a cleaner look */
   font-weight: 700;
   color: var(--contrast-color);
+  line-height: 1.2;
 }
 
 .hero p {
-  font-size: 18px;
+  font-size: 16px; /* Slightly smaller text */
   color: var(--contrast-color);
+  margin-bottom: 25px;
 }
 
 .hero .btn-get-started {
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 1px;
   display: inline-block;
-  padding: 10px 35px;
+  padding: 10px 30px;
   transition: 0.5s;
   border-radius: 4px;
   color: var(--contrast-color);
   border: 2px solid var(--accent-color);
   text-decoration: none;
+}
+
+/* Adjust the Hero height calculation to match the new header height */
+.hero .carousel {
+  min-height: calc(100vh - 240px) !important;
+}
+
+/* Ensure body doesn't have accidental horizontal scroll */
+body {
+  overflow-x: hidden;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 /*--------------------------------------------------------------
 # About Section
@@ -1501,8 +1447,6 @@ section,
 /* Logo Image Styling: Grayscale and opacity for the "unfocused" look */
 .logo-img {
   transition: opacity 0.3s, filter 0.3s;
-  /* Explicitly setting grayscale filter */
-  opacity: 0.7;
   /* CRITICAL FIXES FOR STABILITY AND OVERLAP START */
   max-width: 100%;
   max-height: 80%;
