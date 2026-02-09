@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-z
+
     <meta
       name="description"
       content="Remnant Advisory Services provides expert financial planning, estate management, and investment strategies in Bryanston. Secure your legacy with tailored advice."
@@ -114,37 +114,43 @@ z
       rel="stylesheet"
     />
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="./assets/css/navbar.css">
     <link href="assets/css/main.css" rel="stylesheet" />
   </head>
 
   <body class="index-page about-page">
 <header id="header" class="header d-flex align-items-center sticky-top">
-  <div class="container-fluid d-flex align-items-center">
+  <nav class="navbar navbar-expand-lg w-100">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+      
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="toggler-icon top-bar"></span>
+        <span class="toggler-icon middle-bar"></span>
+        <span class="toggler-icon bottom-bar"></span>
+      </button>
 
-    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      <a class="navbar-brand" href="index.html">
+        <img src="assets\img\updated_logo\Logo_updated.svg" alt="REMNANT Logo" class="logo-img">
+      </a>
 
-    <nav id="navmenu-left" class="navmenu d-none d-xl-flex">
-      <ul>
-        <li><a href="index.html" class="active">HOME</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="index.html#services">SERVICES</a></li>
-      </ul>
-    </nav>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav col-lg-5 justify-content-lg-end nav-left-group">
+          <li class="nav-item"><a class="nav-link" href="#home">HOME</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#services">SERVICES</a></li>
+        </ul>
 
-    <a href="index.html" class="logo d-flex align-items-center mx-auto">
-      <img src="assets/img/updated_logo/Logo_updated.svg" alt="Remnant Logo">
-    </a>
+        <div class="col-lg-2 d-none d-lg-flex"></div>
 
-    <nav id="navmenu-right" class="navmenu d-none d-xl-flex">
-      <ul>
-        <li><a href="team.html">TEAM</a></li>
-        <li><a href="events.html" class="active" style="color: #a02a2a">EVENTS</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-      </ul>
-    </nav>
+        <ul class="navbar-nav col-lg-5 justify-content-lg-start nav-right-group">
+          <li class="nav-item"><a class="nav-link" href="#team">TEAM</a></li>
+          <li class="nav-item"><a class="nav-link" href="#events">EVENTS</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
+        </ul>
+      </div>
 
-  </div>
+    </div>
+  </nav>
 </header>
     <main class="main">
       <!-- Hero Section -->

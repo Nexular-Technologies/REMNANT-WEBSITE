@@ -1,0 +1,239 @@
+/*--------------------------------------------------------------
+# Header Base
+--------------------------------------------------------------*/
+/* 2. NAVBAR STRUCTURE */
+.navbar {
+  padding: 3rem 0; /* Deep padding for 200px logo breathing room */
+  background-color: var(--background-color);
+  font-family: var(--nav-font);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease-in-out;
+}
+
+.logo-img {
+  max-height: 200px; /* Logo at 200px height */
+  width: auto;
+  display: block;
+}
+
+.navbar-brand {
+  z-index: 1050;
+  padding: 0;
+}
+
+/* 3. DESKTOP CENTERING & CLOSER SPACING */
+@media (min-width: 992px) {
+  .navbar-brand {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Pulling the two link groups closer to the center logo */
+  .nav-left-group { padding-right: 6rem; }
+  .nav-right-group { padding-left: 6rem; }
+}
+
+/* 4. NAVIGATION LINKS & HOVER */
+.nav-link {
+  font-weight: 700;
+  color: var(--nav-color) !important;
+  text-transform: uppercase;
+  font-size: 1rem; /* Slightly larger to match the massive logo */
+  letter-spacing: 1.2px;
+  position: relative;
+  transition: 0.3s;
+  margin: 0 10px;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -8px;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after, 
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover, 
+.nav-link.active {
+  color: var(--nav-hover-color) !important;
+}
+
+/* 5. ANIMATED X BURGER (Burgundy) */
+.navbar-toggler {
+  width: 35px;
+  height: 24px;
+  position: relative;
+  border: none;
+  padding: 0;
+}
+
+.navbar-toggler:focus { box-shadow: none; }
+
+.toggler-icon {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: var(--heading-color);
+  border-radius: 2px;
+  transition: .25s ease-in-out;
+}
+
+.top-bar { top: 0px; }
+.middle-bar { top: 10px; }
+.bottom-bar { top: 20px; }
+
+.navbar-toggler:not(.collapsed) .top-bar {
+  top: 10px;
+  transform: rotate(135deg);
+}
+
+.navbar-toggler:not(.collapsed) .middle-bar {
+  opacity: 0;
+  left: -20px;
+}
+
+.navbar-toggler:not(.collapsed) .bottom-bar {
+  top: 10px;
+  transform: rotate(-135deg);
+}
+
+/* 6. MOBILE RESPONSIVENESS */
+@media (max-width: 991px) {
+  .navbar { padding: 1.5rem 0; }
+  
+  .navbar-collapse {
+    background: var(--nav-mobile-background-color);
+    padding: 2.5rem;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  }
+
+  .navbar-brand {
+    position: static;
+    transform: none;
+  }
+
+  .logo-img {
+    max-height: 130px; /* Scaled down for mobile usability */
+  }
+}
+/*--------------------------------------------------------------
+# Mobile Nav Overlay (The Unified 2-Column Grid)
+--------------------------------------------------------------*/
+body.mobile-nav-active { overflow: hidden; }
+
+/* The container appearance when mobile nav is triggered */
+.mobile-nav-active #navmenu-left,
+.mobile-nav-active #navmenu-right {
+  display: flex !important;
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.98);
+  z-index: 9997;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease-in-out;
+}
+
+/* Hide the background of the second nav so they share the first one's white overlay */
+.mobile-nav-active #navmenu-right { background: transparent; }
+
+/* Grid logic for the buttons */
+.mobile-nav-active .navmenu ul {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 90%;
+  max-width: 400px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Position top and bottom sets of buttons */
+.mobile-nav-active #navmenu-left ul { bottom: 51%; }
+.mobile-nav-active #navmenu-right ul { top: 51%; }
+
+.mobile-nav-active .navmenu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  background: #fff;
+  border: 1px solid rgba(160, 42, 42, 0.1);
+  border-radius: 12px;
+  color: #A02A2A !important;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+/* ... existing code ... */
+
+/*--------------------------------------------------------------
+# THE NEW ADAPTED NAVMENU STYLES (Add this at the end)
+--------------------------------------------------------------*/
+
+/* Desktop Symmetry: This fixes the "logo pushed to the right" issue */
+@media (min-width: 1200px) {
+  .header .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  #navmenu-left, #navmenu-right {
+    flex: 1 0 0; /* Forces both sides to be equal width */
+    display: flex;
+  }
+
+  #navmenu-left ul { 
+    justify-content: flex-end; 
+    padding-right: 60px; 
+    gap: 35px; 
+  }
+
+  #navmenu-right ul { 
+    justify-content: flex-start; 
+    padding-left: 60px; 
+    gap: 35px; 
+  }
+
+  .logo img {
+    height: 75px;
+    width: auto;
+  }
+}
+
+/* Mobile Layout: This handles the Grid Menu when body has .mobile-nav-active */
+@media (max-width: 1199px) {
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .mobile-nav-active .navmenu ul {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    width: 92%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .mobile-nav-active #navmenu-left ul { bottom: 50%; margin-bottom: 6px; }
+  .mobile-nav-active #navmenu-right ul { top: 50%; margin-top: 6px; }
+}
