@@ -31,25 +31,41 @@
   padding: 0;
 }
 
-/* 3. DESKTOP CENTERING & CLOSER SPACING */
-/* Ensure the container is the anchor for the absolute logo */
-.navbar .container {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
+/* 3. DESKTOP CENTERING FIX */
+@media (min-width: 992px) {
+  .navbar .container {
+    position: relative; /* Essential for the absolute logo to center correctly */
+    display: flex;
+    align-items: center;
+  }
 
-/* Ensure the collapsed menu doesn't try to use absolute positioning on mobile */
-@media (max-width: 991px) {
   .navbar-brand {
-    position: static !important;
-    transform: none !important;
-    margin: 0 auto; /* Centers logo on mobile if toggler is on the side */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    width: 220px; /* Match or slightly exceed your logo width */
+  }
+
+  /* Clear the 6rem padding you had earlier—it's likely too small for a 200px logo */
+  .nav-left-group { 
+    padding-right: 110px !important; /* Half of logo width + small buffer */
   }
   
-  .nav-left-group, .nav-right-group {
-    padding: 0 !important; /* Reset the desktop gaps on mobile */
-    text-align: center;
+  .nav-right-group { 
+    padding-left: 110px !important; /* Half of logo width + small buffer */
+  }
+}
+
+/* Specific fix for the 1024px - 1200px range where things get squished */
+@media (min-width: 992px) and (max-width: 1200px) {
+  .nav-link {
+    margin: 0 5px; /* Reduce link spacing so they don't wrap */
+    font-size: 0.9rem;
   }
 }
 
@@ -70,7 +86,7 @@
   position: absolute;
   width: 0;
   height: 3px;
-  bottom: -8px;
+  bottom: 0px;
   left: 0;
   background-color: var(--accent-color);
   transition: width 0.3s ease;
@@ -146,4 +162,4 @@
   .logo-img {
     max-height: 130px; /* Scaled down for mobile usability */
   }
-} 
+}
