@@ -1,6 +1,16 @@
-/*--------------------------------------------------------------
-# Header Base
---------------------------------------------------------------*/
+/* 1. BRAND VARIABLES */
+:root {
+  --default-font: "Roboto", sans-serif;
+  --heading-font: "Raleway", sans-serif;
+  --nav-font: "Nunito", sans-serif;
+  --background-color: #ffffff;
+  --heading-color: #A02A2A;
+  --accent-color: #37CACA;
+  --nav-color: #A02A2A;
+  --nav-hover-color: #37CACA;
+  --nav-mobile-background-color: #ffffff;
+}
+
 /* 2. NAVBAR STRUCTURE */
 .navbar {
   padding: 3rem 0; /* Deep padding for 200px logo breathing room */
@@ -22,17 +32,25 @@
 }
 
 /* 3. DESKTOP CENTERING & CLOSER SPACING */
-@media (min-width: 992px) {
+/* Ensure the container is the anchor for the absolute logo */
+.navbar .container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Ensure the collapsed menu doesn't try to use absolute positioning on mobile */
+@media (max-width: 991px) {
   .navbar-brand {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto; /* Centers logo on mobile if toggler is on the side */
   }
   
-  /* Pulling the two link groups closer to the center logo */
-  .nav-left-group { padding-right: 6rem; }
-  .nav-right-group { padding-left: 6rem; }
+  .nav-left-group, .nav-right-group {
+    padding: 0 !important; /* Reset the desktop gaps on mobile */
+    text-align: center;
+  }
 }
 
 /* 4. NAVIGATION LINKS & HOVER */
@@ -128,112 +146,4 @@
   .logo-img {
     max-height: 130px; /* Scaled down for mobile usability */
   }
-}
-/*--------------------------------------------------------------
-# Mobile Nav Overlay (The Unified 2-Column Grid)
---------------------------------------------------------------*/
-body.mobile-nav-active { overflow: hidden; }
-
-/* The container appearance when mobile nav is triggered */
-.mobile-nav-active #navmenu-left,
-.mobile-nav-active #navmenu-right {
-  display: flex !important;
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.98);
-  z-index: 9997;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s ease-in-out;
-}
-
-/* Hide the background of the second nav so they share the first one's white overlay */
-.mobile-nav-active #navmenu-right { background: transparent; }
-
-/* Grid logic for the buttons */
-.mobile-nav-active .navmenu ul {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  width: 90%;
-  max-width: 400px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* Position top and bottom sets of buttons */
-.mobile-nav-active #navmenu-left ul { bottom: 51%; }
-.mobile-nav-active #navmenu-right ul { top: 51%; }
-
-.mobile-nav-active .navmenu a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80px;
-  background: #fff;
-  border: 1px solid rgba(160, 42, 42, 0.1);
-  border-radius: 12px;
-  color: #A02A2A !important;
-  font-weight: 700;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-}
-/* ... existing code ... */
-
-/*--------------------------------------------------------------
-# THE NEW ADAPTED NAVMENU STYLES (Add this at the end)
---------------------------------------------------------------*/
-
-/* Desktop Symmetry: This fixes the "logo pushed to the right" issue */
-@media (min-width: 1200px) {
-  .header .container-fluid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-
-  #navmenu-left, #navmenu-right {
-    flex: 1 0 0; /* Forces both sides to be equal width */
-    display: flex;
-  }
-
-  #navmenu-left ul { 
-    justify-content: flex-end; 
-    padding-right: 60px; 
-    gap: 35px; 
-  }
-
-  #navmenu-right ul { 
-    justify-content: flex-start; 
-    padding-left: 60px; 
-    gap: 35px; 
-  }
-
-  .logo img {
-    height: 75px;
-    width: auto;
-  }
-}
-
-/* Mobile Layout: This handles the Grid Menu when body has .mobile-nav-active */
-@media (max-width: 1199px) {
-  .logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .mobile-nav-active .navmenu ul {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    width: 92%;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .mobile-nav-active #navmenu-left ul { bottom: 50%; margin-bottom: 6px; }
-  .mobile-nav-active #navmenu-right ul { top: 50%; margin-top: 6px; }
-}
+} 
