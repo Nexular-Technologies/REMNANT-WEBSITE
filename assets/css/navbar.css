@@ -184,7 +184,7 @@
 }
 
 /* 7. SMALL DEVICE OPTIMIZATION (425px and below) */
-@media (max-width: 425px) {
+@media (max-width: 426px) {
   /* Force Side-by-Side Layout */
   .navbar .container {
     display: flex !important;
@@ -196,9 +196,10 @@
   }
 
   .navbar-brand {
-    margin: 0 !important;
+    position:relative;
     max-width: 70%;
     flex-shrink: 1;
+    Left:15%
   }
 
   .logo-img {
