@@ -441,7 +441,7 @@ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.736946444833!2d2
             <h3 style="color: #000; font-size: 20px;">GET IN TOUCH:</h3>
             <p style="font-style: italic;"> indicates required fields</p>
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form id="contact-form" class="php-email-form">
 
               <label for="first-name" class="form-label">NAME *</label>
               <div class="row">
@@ -584,21 +584,22 @@ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.736946444833!2d2
     <!----Success Message-->
 <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" style="border: none; border-top: 6px solid #A02A2A; border-radius: 15px; width: 100% !important;">
-      <div class="modal-body text-center p-5 d-flex flex-column align-items-center justify-content-center" style="width: 100% !important;">
-        
-        <img src="assets/img/updated_logo/Logo_updated.svg" alt="RMNT Logo" style="width: 180px; height: auto; margin-bottom: 25px;">
-
-        <div style="width: 70px; height: 70px; background: #f0fff4; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-          <span style="font-size: 35px; color: #28a745;">✓</span>
+    <div class="modal-content custom-modal-design">
+      <div class="modal-body p-4 p-md-5">
+      
+        <div class="success-checkmark-modern">
+          <span class="check-tick">✓</span>
         </div>
 
-        <h3 style="color: #222; font-weight: 700; width: 100%;">Request Received</h3>
-        <p style="color: #555; width: 100%;">Thank you for reaching out. We will contact you shortly.</p>
+        <h2 class="modal-title-custom">Request Received</h2>
+        <p class="modal-text-custom">
+          Thank you for choosing <strong>Remnant</strong>. <br>
+          We will contact you shortly.
+        </p>
 
-        <div class="d-flex align-items-center justify-content-center p-2 px-4 bg-light rounded-pill mt-2">
-          <div class="spinner-border spinner-border-sm text-secondary me-3" role="status"></div>
-          <span class="text-muted" style="font-size: 13px;">Redirecting you home...</span>
+        <div class="redirect-pill">
+          <div class="progress-dot"></div>
+          <span>Redirecting home</span>
         </div>
 
       </div>

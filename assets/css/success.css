@@ -1,59 +1,76 @@
-/* Custom Success Modal Styling */
-#successModal .modal-content {
+/* Premium Success Modal - Efficiency Update */
+.custom-modal-design {
     border: none !important;
-    border-top: 6px solid #A02A2A !important; /* Your brand red */
-    border-radius: 15px !important;
-    overflow: hidden;
+    border-radius: 20px !important;
+    background: #ffffff !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
+    max-height: 90vh; /* Prevents modal from ever being taller than the screen */
+    overflow: hidden; /* Hard-stops the scrollbar */
 }
 
-#successModal .modal-body {
-    padding: 3rem 2rem !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.custom-modal-design .modal-body {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
 }
 
-/* Fix for the "squashed" text columns */
-#successModal .modal-body > * {
-    width: 100%; /* Forces elements to take full width and stack vertically */
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+/* Logo: 100% width of its container, but capped for efficiency */
+.modal-logo-wrapper {
+    width: 100%;
 }
 
-#successModal h3 {
-    font-weight: 700;
-    color: #222;
-    margin: 20px 0 10px 0;
+.modal-logo-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
-#successModal p {
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 25px;
-}
-
-/* Animated Checkmark Circle */
-.success-icon-circle {
-    width: 80px;
-    height: 80px;
-    background-color: #f0fff4;
+/* Icon & Typography Sizing */
+.success-checkmark-modern {
+    width: 50px;
+    height: 50px;
+    background: #28a745;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10px;
+    color: white;
+    font-size: 24px;
+    margin-bottom: 1rem;
 }
 
-/* Redirect Loader Bar */
-.redirect-status {
-    background-color: #f8f9fa;
-    padding: 12px 20px;
-    border-radius: 50px;
-    display: inline-flex;
+.modal-title-custom {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-text-custom {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+}
+
+/* Smaller Redirect Pill for Mobile Efficiency */
+.redirect-pill {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    width: auto !important; /* Overrides the 100% width for this specific element */
+    gap: 8px;
+    background: #fdf2f2;
+    padding: 8px 16px;
+    border-radius: 100px;
+    color: #A02A2A;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Responsive Fix: Scales logo further down on tiny screens */
+@media (max-height: 600px) {
+    .modal-logo-wrapper { max-width: 150px; }
+    .modal-body { padding: 1.5rem !important; }
 }
