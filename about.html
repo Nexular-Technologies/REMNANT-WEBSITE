@@ -36,6 +36,7 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/navbar.css">
   <link href="assets/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets\css\success.css">
 
 
 </head>
@@ -559,21 +560,53 @@ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.736946444833!2d2
   <!-- Preloader -->
   <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Main JS File -->
-  <!-- NOTE: This is loaded last to ensure all elements above it are ready -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/modal.js"></script>
+      <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Main JS File -->
+    <!---EmailJS-->
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    emailjs.init("vrPfxZMgyjrWE_X91");
+  })();
+</script>
 
+    <!-- NOTE: This is loaded last to ensure all elements above it are ready -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/email.js"></script>
+      <!----Success Message-->
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        
+        <div class="success-icon-circle">
+          <span style="font-size: 40px; color: #28a745;">✓</span>
+        </div>
+
+        <h3>Request Received</h3>
+        
+        <p>
+          Thank you for reaching out.<br>
+          One of our consultants will contact you shortly.
+        </p>
+
+        <div class="redirect-status">
+          <div class="spinner-border spinner-border-sm text-secondary me-3" role="status"></div>
+          <span class="text-muted" style="font-size: 14px;">Redirecting to home page...</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>

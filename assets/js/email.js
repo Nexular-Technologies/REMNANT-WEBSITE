@@ -1,43 +1,45 @@
-import emailjs from '@emailjs/browser';
+// assets/js/email.js
 
-/**
- * RMNT Advisory - Email Service Logic
- */
-
-const PUBLIC_KEY = "vrPfxZMgyjrWE_X91";
-const SERVICE_ID = "contact_service"; 
-const TEMPLATE_ID = "contact_form";
-
-export const initEmailService = () => {
+document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
 
-    if (!contactForm) return;
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
 
-    emailjs.init({ publicKey: PUBLIC_KEY });
+            const btn = this.querySelector('button[type="submit"]');
+            const originalBtnText = btn.innerText;
+            
+            // UI State: Loading
+            btn.disabled = true;
+            btn.innerText = 'SENDING...';
 
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+            // Send to EmailJS
+            // Service ID: service_r5z4jx9 | Template ID: RMNT_EMAIL_CONNECTION_
+            emailjs.sendForm('service_r5z4jx9', 'RMNT_EMAIL_CONNECTION_', this)
+                .then(() => {
+                    // 1. Success Modal Trigger (Using Bootstrap)
+                    const modalElement = document.getElementById('successModal');
+                    const successModal = new bootstrap.Modal(modalElement);
+                    successModal.show();
 
-        const btn = this.querySelector('button[type="submit"]');
-        const originalText = btn.innerText;
+                    // 2. Reset Form
+                    contactForm.reset();
+                    btn.disabled = false;
+                    btn.innerText = originalBtnText;
 
-        btn.innerText = 'SENDING...';
-        btn.disabled = true;
+                    // 3. Redirect to home after 3.5 seconds
+                    setTimeout(() => {
+                        window.location.href = 'index.html'; 
+                    }, 3500);
 
-        // Using sendForm automatically picks up all your HTML 'name' attributes
-        // (first-name, last-name, email, service, message)
-        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
-            .then(() => {
-                alert('Thank you! Your message has been sent to RMNT Advisory.');
-                contactForm.reset();
-            })
-            .catch((error) => {
-                console.error('EmailJS Error:', error);
-                alert('Failed to send. Please email advisory@rmnt.co.za directly.');
-            })
-            .finally(() => {
-                btn.innerText = originalText;
-                btn.disabled = false;
-            });
-    });
-};
+                }, (error) => {
+                    // This is the error currently appearing in your alert
+                    alert('Failed to send request. Please check your internet or console for details.');
+                    btn.disabled = false;
+                    btn.innerText = originalBtnText;
+                    console.error('EmailJS Error:', error);
+                });
+        });
+    }
+});

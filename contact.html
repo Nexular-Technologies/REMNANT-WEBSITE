@@ -56,6 +56,7 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/navbar.css">
+  <link rel="stylesheet" href="assets\css\success.css">
 </head>
 
 <body class="contact-page">
@@ -152,57 +153,101 @@
             <h3 style="color: #000; font-size: 20px;">GET IN TOUCH:</h3>
             <p style="font-style: italic;"> indicates required fields</p>
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+<form id="contact-form" class="php-email-form">
+  <label for="first-name" class="form-label">NAME *</label>
+  <div class="row">
+    <div class="col-md-6 form-group">
+      <input
+        type="text"
+        name="first-name"
+        class="form-control"
+        id="first-name"
+        placeholder="First"
+        required=""
+      />
+    </div>
+    <div class="col-md-6 form-group mt-3 mt-md-0">
+      <input
+        type="text"
+        name="last-name"
+        class="form-control"
+        id="last-name"
+        placeholder="Last"
+        required=""
+      />
+    </div>
+  </div>
 
-              <label for="first-name" class="form-label">NAME *</label>
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="first-name" class="form-control" id="first-name" placeholder="First"
-                    required="">
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="text" name="last-name" class="form-control" id="last-name" placeholder="Last"
-                    required="">
-                </div>
-              </div>
+  <div class="row mt-3">
+    <div class="col-md-6 form-group">
+      <label for="email" class="form-label">Email *</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        id="email"
+        required=""
+      />
+    </div>
+    <div class="col-md-6 form-group mt-3 mt-md-0">
+      <label for="phone" class="form-label">Phone number</label>
+      <input
+        type="text"
+        class="form-control"
+        name="phone"
+        id="phone"
+      />
+    </div>
+  </div>
 
-              <div class="row mt-3">
-                <div class="col-md-6 form-group">
-                  <label for="email" class="form-label">Email *</label>
-                  <input type="email" class="form-control" name="email" id="email" required="">
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <label for="phone" class="form-label">Phone number</label>
-                  <input type="text" class="form-control" name="phone" id="phone">
-                </div>
-              </div>
-
-          <div class="form-group mt-3">
+  <div class="form-group mt-3">
     <label for="service-select" class="form-label">Let us know what we can help with *</label>
-    <select class="form-control" name="service" id="service-select" required="">
-        <option value="" disabled selected>Select a Service</option>
-        <option value="fiduciary_services">Fiduciary Services</option>
-        <option value="financial_planning">Financial Planning</option>
-        <option value="local_offshore_investment">Local &amp; Offshore Investment</option>
-        <option value="tailored_employee_benefits">Tailored Employee Benefits</option>
-        <option value="estate_planning">Estate Planning</option>
-        <option value="medical_aid_gap_cover">Medical Aid Gap Cover</option>
-        <option value="retirement_planning">Retirement Planning</option>
-        <option value="short_term_insurance">Short-Term Insurance: Personal &amp; Commercial</option>
-        <option value="risk_analysis">Risk Analysis</option>
-        <option value="corporate_personal_tax_planning">Corporate &amp; Personal Tax Planning</option>
+    <select
+      class="form-control"
+      name="service"
+      id="service-select"
+      required=""
+    >
+      <option value="" disabled selected>Select a Service</option>
+      <option value="Fiduciary Services">Fiduciary Services</option>
+      <option value="Financial Planning">Financial Planning</option>
+      <option value="Local & Offshore Investment">Local & Offshore Investment</option>
+      <option value="Tailored Employee Benefits">Tailored Employee Benefits</option>
+      <option value="Estate Planning">Estate Planning</option>
+      <option value="Medical Aid Gap Cover">Medical Aid Gap Cover</option>
+      <option value="Retirement Planning">Retirement Planning</option>
+      <option value="Short-Term Insurance">Short-Term Insurance: Personal & Commercial</option>
+      <option value="Risk Analysis">Risk Analysis</option>
+      <option value="Tax Planning">Corporate & Personal Tax Planning</option>
     </select>
-</div>
+  </div>
 
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Enter you message here"
-                  required=""></textarea>
-              </div>
-              <div class="text-start mt-4">
-                <button type="submit"
-                  style="background-color: #444; color: white; padding: 10px 20px; border: none; cursor: pointer;">SUBMIT</button>
-              </div>
-            </form>
+  <div class="form-group mt-3">
+    <textarea
+      class="form-control"
+      name="message"
+      rows="5"
+      placeholder="Enter your message here"
+      required=""
+    ></textarea>
+  </div>
+
+  <div class="my-3">
+    <div id="loading-message" style="display:none; color: #444;">Sending...</div>
+    <div id="sent-message" style="display:none; color: green;">Your message has been sent!</div>
+    <div id="error-message" style="display:none; color: red;">Something went wrong.</div>
+  </div>
+
+  <div class="text-start mt-4">
+    <button
+      type="submit"
+      id="submit-btn"
+      style="background-color: #444; color: white; padding: 10px 20px; border: none; cursor: pointer;"
+    >
+      SUBMIT
+    </button>
+  </div>
+</form>
           </div>
         </div>
 
@@ -285,7 +330,6 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
@@ -293,9 +337,42 @@
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
+   <!---EmailJS-->
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    emailjs.init("vrPfxZMgyjrWE_X91");
+  })();
+</script>
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/email.js"></script>
+      <!----Success Message-->
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        
+        <div class="success-icon-circle">
+          <span style="font-size: 40px; color: #28a745;">✓</span>
+        </div>
 
+        <h3>Request Received</h3>
+        
+        <p>
+          Thank you for reaching out.<br>
+          One of our consultants will contact you shortly.
+        </p>
+
+        <div class="redirect-status">
+          <div class="spinner-border spinner-border-sm text-secondary me-3" role="status"></div>
+          <span class="text-muted" style="font-size: 14px;">Redirecting to home page...</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>
