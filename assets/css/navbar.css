@@ -18,7 +18,6 @@
   font-family: var(--nav-font);
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
   transition: all 0.4s ease-in-out;
-  
 }
 .navbar-nav {
   visibility: visible !important;
@@ -33,7 +32,8 @@
   z-index: 1050;
   padding: 0;
 }
-.nav-left-group, .nav-right-group {
+.nav-left-group,
+.nav-right-group {
   position: relative;
   z-index: 1060; /* Higher than the brand */
 }
@@ -47,7 +47,7 @@
     justify-content: space-between;
   }
 
-  .nav-left-group, 
+  .nav-left-group,
   .nav-right-group {
     flex: 1; /* Each takes exactly 50% of available width */
     display: flex;
@@ -55,12 +55,12 @@
 
   .nav-left-group {
     justify-content: center; /* Centers items within the left half */
-    padding-right: 110px;    /* Gutter for the 220px logo */
+    padding-right: 110px; /* Gutter for the 220px logo */
   }
 
   .nav-right-group {
     justify-content: center; /* Centers items within the right half */
-    padding-left: 110px;     /* Gutter for the 220px logo */
+    padding-left: 110px; /* Gutter for the 220px logo */
   }
 
   .navbar-brand {
@@ -178,14 +178,22 @@
     transition: 0.25s ease-in-out;
   }
 
-  .top-bar { top: 0px; }
-  .middle-bar { top: 10px; }
-  .bottom-bar { top: 20px; }
+  .top-bar {
+    top: 0px;
+  }
+  .middle-bar {
+    top: 10px;
+  }
+  .bottom-bar {
+    top: 20px;
+  }
 }
 
-/* 7. SMALL DEVICE OPTIMIZATION (425px and below) */
-@media (max-width: 426px) {
-  /* Force Side-by-Side Layout */
+/* CONSOLIDATED SMALL DEVICE OPTIMIZATION (Up to 450px)
+   Covers standard iPhones, Pro Max models (14-17), and small Androids */
+@media (max-width: 460px) {
+
+  /* 1. Force Header Layout */
   .navbar .container {
     display: flex !important;
     flex-direction: row !important;
@@ -195,48 +203,27 @@
     padding: 10px 15px !important;
   }
 
+  /* 2. Brand/Logo Positioning & Retina Fix */
   .navbar-brand {
-    position:relative;
-    max-width: 70%;
+    position: relative;
+    max-width: 65%;
     flex-shrink: 1;
-    Left:15%
+    left: 8%; /* Balanced position for mobile */
   }
 
   .logo-img {
-    max-height: 100% !important; /* Adjusted to fit row perfectly */
-    width: auto;
-  }
-
-  /* The Hamburger Button & Animated X */
-  .navbar-toggler {
-    margin: 0 !important;
-    flex-shrink: 0;
-    z-index: 2100 !important;
     position: relative;
-    width: 35px;
-    height: 24px;
-    border: none;
+    left: 15%;
+    width: auto;
+    /* SHARPENING FOR RETINA / IOS */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    transform: translateZ(0); 
   }
 
-  /* Morph to 'X' when menu is open (not .collapsed) */
-  .navbar-toggler:not(.collapsed) .top-bar {
-    top: 10px;
-    transform: rotate(135deg);
-  }
-
-  .navbar-toggler:not(.collapsed) .middle-bar {
-    opacity: 0;
-    left: -20px;
-  }
-
-  .navbar-toggler:not(.collapsed) .bottom-bar {
-    top: 10px;
-    transform: rotate(-135deg);
-  }
-
-  /* Full-Screen Solid Overlay */
+  /* 3. Full-Screen Mobile Menu (Fixed Z-Index Fix) */
   .navbar-collapse {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     width: 100vw;
@@ -246,10 +233,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
+    /* High Z-Index ensures it covers the Hero section */
+    z-index: 9998 !important; 
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
     margin: 0 !important;
   }
 
@@ -258,7 +246,26 @@
     visibility: visible;
   }
 
-  /* Staggered Animations */
+  /* 4. Toggler Button (The Hamburger) 
+     Higher Z-Index than the overlay so it stays clickable */
+  .navbar-toggler {
+    z-index: 9999 !important;
+    position: relative;
+    width: 35px;
+    height: 24px;
+    border: none;
+    background: transparent;
+  }
+
+  /* 5. Mobile Nav Links */
+  .nav-link {
+    font-size: 1.5rem !important;
+    padding: 15px 0 !important;
+    text-align: center;
+    color: #333 !important; 
+  }
+
+  /* 6. Staggered Entrance Animations */
   .navbar-nav .nav-item {
     opacity: 0;
     transform: translateY(20px);
@@ -278,9 +285,8 @@
   .navbar-collapse.show .nav-item:nth-child(5) { transition-delay: 0.5s; }
   .navbar-collapse.show .nav-item:nth-child(6) { transition-delay: 0.6s; }
 
-  .nav-link {
-    font-size: 1.4rem !important;
-    padding: 12px 0 !important;
-    text-align: center;
+  /* 7. iPhone Dynamic Island Safe Zone */
+  .navbar {
+    padding-top: env(safe-area-inset-top, 20px) !important;
   }
 }
