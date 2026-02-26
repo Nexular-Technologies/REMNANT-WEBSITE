@@ -207,12 +207,6 @@ h6 {
     color: #333 !important;
 }
 
-/* Image Wrapper Styling */
-.modal-img-wrapper {
-    flex: 0 0 35%; /* Image takes 35% of the width */
-    background-color: #f8f9fa;
-}
-
 .modal-img-wrapper img {
     width: 100%;
     height: 100%;
@@ -1432,21 +1426,6 @@ body {
   }
 }
 
-/* Logo Image Styling: Grayscale and opacity for the "unfocused" look */
-.logo-img {
-  transition: opacity 0.3s, filter 0.3s;
-  /* CRITICAL FIXES FOR STABILITY AND OVERLAP START */
-  max-width: 100%;
-  max-height: 80%;
-  /* Limits vertical size relative to the container */
-  width: auto;
-  /* Ensure width scales based on height */
-  height: auto;
-  display: block;
-  object-fit: contain;
-  /* Ensures the whole logo is visible without cropping */
-  /* CRITICAL FIXES END */
-}
 
 
 /*--------------------------------------------------------------
